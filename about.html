@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | West Scranton Intermediate</title>
+  <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* GLOBAL BLUE & WHITE THEME */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: #f0f5ff; color: #002868; min-height: 100vh; display: flex; flex-direction: column; }
+    .wrapper { max-width: 1400px; margin: 0 auto; background: white; box-shadow: 0 0 40px rgba(0,40,100,0.15); flex: 1; display: flex; flex-direction: column; }
+    
+    /* HEADER */
+    .site-header { position: relative; border-bottom: 6px solid #fff; overflow: hidden; background: #003399; }
+    .header-bg-link { display: block; width: 100%; height: 250px; background: url('https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_5/v1724185898/scrsdorg/dzkyovz3ntzjlbdtdkou/WSIS.jpg') no-repeat center 25%; background-size: cover; }
+    .header-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, #fff 80%, rgba(255,255,255,0.7) 100%); padding: 1.5rem 2.5rem; display: flex; align-items: center; pointer-events: none; }
+    .logo-container { pointer-events: auto; margin-right: 2rem; z-index: 10; }
+    .logo-img { height: 100px; transition: transform 0.3s; }
+    .logo-container:hover .logo-img { transform: scale(1.1) rotate(-3deg); }
+    .school-title h1 { font-size: 2.4rem; color: #003399; }
+
+    /* NAV & DROPDOWNS */
+    .nav-bar { background: #003399; padding: 0 2rem; position: sticky; top: 0; z-index: 1000; }
+    .nav-menu { display: flex; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-item > a { display: block; padding: 1.2rem 1.8rem; color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
+    .nav-item:hover > a { background: #1e4db3; }
+    .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; min-width: 240px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s; border-top: 4px solid #ffd700; }
+    .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu a { display: block; padding: 1rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; }
+    .dropdown-menu a:hover { background: #f0f7ff; padding-left: 1.5rem; }
+
+    /* CONTENT AREA */
+    main { padding: 4rem 2rem; flex: 1; display: flex; justify-content: center; }
+    .content-card { background: #f8fbff; padding: 4rem; border-radius: 40px; border: 2px solid #ddecff; max-width: 1000px; width: 100%; animation: fadeIn 0.8s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: #003399; border-bottom: 4px solid #ffd700; display: inline-block; }
+    p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    /* FOOTER */
+    footer { background: #002868; color: white; padding: 3rem 2rem; border-top: 5px solid #ffd700; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .social-link { color: #ffd700; text-decoration: none; font-weight: 800; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <header class="site-header">
+    <a href="https://www.wsdwi.org/" class="header-bg-link" target="_blank"></a>
+    <div class="header-overlay">
+      <a href="index.html" class="logo-container"><img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" alt="Logo" class="logo-img"></a>
+      <div class="school-title"><h1>West Scranton Intermediate</h1><p>Home of the Invaders · Grades 5-8</p></div>
+    </div>
+    <nav class="nav-bar">
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="about.html">About Us</a></li>
+        <li class="nav-item">
+          <a href="#">Students <i class="fas fa-chevron-down" style="font-size:0.8rem"></i></a>
+          <div class="dropdown-menu">
+            <a href="https://clever.com/oauth/authorize?channel=clever&client_id=4c63c1cf623dce82caac&confirmed=true&district_id=52db7e348b625cb10d00583d&redirect_uri=https%3A%2F%2Fclever.com%2Fin%2Fauth_callback&response_type=code&state=babf6688ade41c2217539218daec5a953448a7ac1ba3f75800e1b6394831d2a9" target="_blank">Clever</a>
+            <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
+            <a href="https://safe2saypa.org" target="_blank">Safe2Say</a>
+            <a href="https://esp41pehac.eschoolplus.powerschool.com/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%3fSiteCode%3dsctlive&SiteCode=sctlive" target="_blank">Home Access</a>
+            <a href="bell-schedule.html">Bell Schedule</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#">Teachers <i class="fas fa-chevron-down" style="font-size:0.8rem"></i></a>
+          <div class="dropdown-menu">
+            <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn?ReturnUrl=%25252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252feSchoolPLUS" target="_blank">eSchool</a>
+            <a href="https://clever.com/oauth/authorize?channel=clever&client_id=4c63c1cf623dce82caac&confirmed=true&district_id=52db7e348b625cb10d00583d&redirect_uri=https%3A%2F%2Fclever.com%2Fin%2Fauth_callback&response_type=code&state=babf6688ade41c2217539218daec5a953448a7ac1ba3f75800e1b6394831d2a9" target="_blank">Clever</a>
+            <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content-card">
+      <h2>About Our School</h2>
+      <p>West Scranton Intermediate School is proud to serve the students and families of the West Side. Our mission is to provide a challenging academic environment that fosters personal growth, responsibility, and community pride.</p>
+      <p>As the "Home of the Invaders," we offer a variety of programs including STEM, performing arts, and competitive athletics. Our dedicated faculty works tirelessly to ensure every student in grades 5-8 is prepared for the transition to high school and beyond.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <p><strong>West Scranton Intermediate School</strong></p>
+        <p>1401 Fellows Street, Scranton, PA 18504</p>
+        <p>Phone: 570-348-3475 | Fax: 570-348-3610</p>
+      </div>
+      <a href="https://www.facebook.com/profile.php?id=61550523236671" target="_blank" class="social-link"><i class="fab fa-facebook"></i> FACEBOOK</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
