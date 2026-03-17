@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | West Scranton Intermediate</title>
+  <title>Bell Schedule | West Scranton Intermediate</title>
   <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* SHARED CSS (Copy of Above) */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
     body { background: #f0f5ff; color: #002868; min-height: 100vh; display: flex; flex-direction: column; }
     .wrapper { max-width: 1400px; margin: 0 auto; background: white; box-shadow: 0 0 50px rgba(0,40,100,0.2); flex: 1; display: flex; flex-direction: column; position: relative; }
@@ -16,9 +17,8 @@
     .header-bg-link:hover { transform: scale(1.03); }
     .header-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, #fff 75%, rgba(255,255,255,0) 100%); padding: 1.5rem 2.5rem; display: flex; align-items: center; pointer-events: none; }
     .logo-container { pointer-events: auto; margin-right: 2rem; z-index: 10; }
-    .logo-img { height: 110px; transition: 0.3s; }
-    .logo-container:hover .logo-img { transform: scale(1.1) rotate(-3deg); }
-    .school-title h1 { font-size: 2.6rem; color: #003399; letter-spacing: -1px; }
+    .logo-img { height: 110px; }
+    .school-title h1 { font-size: 2.6rem; color: #003399; }
 
     .nav-bar { background: #003399; padding: 0 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
     .nav-menu { display: flex; list-style: none; }
@@ -33,22 +33,20 @@
         border-top: 4px solid #ffd700; pointer-events: auto; 
     }
     .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .dropdown-menu a { display: block; padding: 1rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #f0f0f0; transition: 0.2s; }
-    .dropdown-menu a:hover { background: #f0f7ff; padding-left: 1.5rem; }
+    .dropdown-menu a { display: block; padding: 1rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
 
-    main { padding: 5rem 2rem; text-align: left; flex: 1; }
-    .content-box { background: #f8fbff; padding: 4rem; border-radius: 50px; border: 2px solid #ddecff; max-width: 1000px; margin: 0 auto; box-shadow: 0 15px 30px rgba(0,0,0,0.03); }
-    .content-box h2 { font-size: 3rem; color: #003399; margin-bottom: 1.5rem; border-bottom: 4px solid #ffd700; display: inline-block; }
-    .content-box p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem; color: #333; }
+    main { padding: 5rem 2rem; text-align: center; flex: 1; }
+    .hero { background: #f8fbff; padding: 4rem; border-radius: 50px; border: 2px solid #ddecff; max-width: 900px; margin: 0 auto; }
+    .hero h2 { font-size: 3rem; color: #003399; margin-bottom: 2rem; }
 
-    footer { background: #002868; color: white; padding: 3rem 2rem; border-top: 5px solid #ffd700; margin-top: auto; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    th { background: #003399; color: white; padding: 18px; text-align: left; }
+    td { padding: 15px; border-bottom: 1px solid #eee; text-align: left; color: #333; font-weight: 600; }
+    tr:hover { background: #f0f7ff; }
+
+    footer { background: #002868; color: white; padding: 3rem 2rem; border-top: 5px solid #ffd700; }
     .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-
-    #scrollToTop { 
-        position: fixed; bottom: 30px; right: 30px; background: #ffd700; color: #002868; 
-        width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; 
-        justify-content: center; text-decoration: none; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 2000;
-    }
+    #scrollToTop { position: fixed; bottom: 30px; right: 30px; background: #ffd700; color: #002868; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 2000; }
   </style>
 </head>
 <body>
@@ -78,7 +76,6 @@
           <div class="dropdown-menu">
             <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn" target="_blank">eSchool PLUS</a>
             <a href="https://clever.com" target="_blank">Teacher Clever</a>
-            <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
           </div>
         </li>
       </ul>
@@ -86,10 +83,23 @@
   </header>
 
   <main>
-    <div class="content-box">
-      <h2>About Our School</h2>
-      <p>West Scranton Intermediate School is proud to be the home of the Invaders. We serve a diverse community of learners in grades 5 through 8, focusing on academic excellence and social-emotional growth.</p>
-      <p>Our faculty is dedicated to creating a safe and engaging environment where students can explore their interests and prepare for their transition to high school.</p>
+    <div class="hero">
+      <h2>2024-2025 Bell Schedule</h2>
+      <table>
+        <thead><tr><th>Period</th><th>Start Time</th><th>End Time</th></tr></thead>
+        <tbody>
+          <tr><td>Homeroom</td><td>8:45 AM</td><td>9:05 AM</td></tr>
+          <tr><td>Period 1</td><td>9:07 AM</td><td>10:03 AM</td></tr>
+          <tr><td>Period 2</td><td>10:05 AM</td><td>11:01 AM</td></tr>
+          <tr><td>Period 3</td><td>11:03 AM</td><td>11:33 AM</td></tr>
+          <tr><td>Period 4</td><td>11:35 AM</td><td>11:59 AM</td></tr>
+          <tr><td>Period 5</td><td>12:01 PM</td><td>12:31 PM</td></tr>
+          <tr><td>Period 6</td><td>12:33 PM</td><td>12:57 PM</td></tr>
+          <tr><td>Period 7</td><td>12:59 PM</td><td>1:29 PM</td></tr>
+          <tr><td>Period 8</td><td>1:31 PM</td><td>2:27 PM</td></tr>
+          <tr><td>Period 9</td><td>2:29 PM</td><td>3:25 PM</td></tr>
+        </tbody>
+      </table>
     </div>
   </main>
 
