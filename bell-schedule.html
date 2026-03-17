@@ -1,38 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bell Schedule | West Scranton Intermediate School</title>
-    <style>
-        /* Plus table styles */
-        table { width: 100%; border-collapse: collapse; margin-top: 2rem; border-radius: 15px; overflow: hidden; }
-        th { background: #003399; color: white; padding: 1.2rem; text-align: left; }
-        td { padding: 1rem; border-bottom: 1px solid #eee; font-weight: 600; }
-        tr:hover { background: #f9fbff; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bell Schedule | West Scranton Intermediate School</title>
+  <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* [Use the same base CSS from about.html] */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: #f0f5ff; color: #002868; min-height: 100vh; display: flex; flex-direction: column; }
+    .branding-bar { background: white; padding: 1.5rem 5%; display: flex; align-items: center; }
+    .logo-img { height: 90px; margin-right: 20px; }
+    .school-title h1 { font-size: 2.8rem; color: #003399; }
+    .school-title p { font-size: 1.1rem; color: #446ab3; font-weight: 600; }
+    .nav-bar { background: #003399; width: 100%; padding: 0 5%; position: sticky; top: 0; z-index: 9999; }
+    .nav-menu { display: flex; list-style: none; }
+    .nav-item > a { display: block; padding: 1.2rem 2rem; color: white; text-decoration: none; font-weight: 700; }
+    .dropdown { position: absolute; top: 100%; left: 0; background: white; min-width: 260px; opacity: 0; visibility: hidden; border-top: 4px solid #ffd700; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: 0.3s; }
+    .nav-item:hover .dropdown { opacity: 1; visibility: visible; }
+    .dropdown a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; }
+
+    main { flex: 1; padding: 5rem 5%; display: flex; justify-content: center; }
+    .table-card { background: white; width: 100%; max-width: 1000px; padding: 3rem; border-radius: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+    .table-card h2 { font-size: 3rem; color: #003399; margin-bottom: 2rem; text-align: center; }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: #003399; color: white; padding: 1.2rem; text-align: left; }
+    td { padding: 1rem; border-bottom: 1px solid #eee; font-weight: 600; color: #333; }
+    tr:nth-child(even) { background: #f9fbff; }
+
+    footer { background: #002868; color: white; padding: 2.5rem 5%; border-top: 5px solid #ffd700; }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .fb-link { color: #ffd700; text-decoration: none; font-weight: bold; }
+  </style>
 </head>
 <body>
-    <main>
-        <div class="content-box">
-            <h2 style="border-bottom: 5px solid #ffd700; display: inline-block;">Bell Schedule</h2>
-            <table>
-                <thead><tr><th>Period</th><th>Start</th><th>End</th></tr></thead>
-                <tbody>
-                    <tr><td>Homeroom</td><td>8:45 AM</td><td>9:05 AM</td></tr>
-                    <tr><td>Period 1</td><td>9:07 AM</td><td>10:03 AM</td></tr>
-                    <tr><td>Period 2</td><td>10:05 AM</td><td>11:01 AM</td></tr>
-                    <tr><td>Period 3</td><td>11:03 AM</td><td>11:33 AM</td></tr>
-                    <tr><td>Period 4</td><td>11:35 AM</td><td>11:59 AM</td></tr>
-                    <tr><td>Period 5</td><td>12:01 PM</td><td>12:31 PM</td></tr>
-                    <tr><td>Period 6</td><td>12:33 PM</td><td>12:57 PM</td></tr>
-                    <tr><td>Period 7</td><td>12:59 PM</td><td>1:29 PM</td></tr>
-                    <tr><td>Period 8</td><td>1:31 PM</td><td>2:27 PM</td></tr>
-                    <tr><td>Period 9</td><td>2:29 PM</td><td>3:25 PM</td></tr>
-                </tbody>
-            </table>
+  <div class="branding-bar">
+    <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img">
+    <div class="school-title"><h1>West Scranton Intermediate School</h1><p>Home of the Invaders · Grades 5-8</p></div>
+  </div>
+  <nav class="nav-bar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item"><a href="about.html">About Us</a></li>
+      <li class="nav-item">
+        <a href="#">Students <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown">
+          <a href="https://esp41pehac.eschoolplus.powerschool.com/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%3fSiteCode%3dsctlive&SiteCode=sctlive" target="_blank">Home Access</a>
+          <a href="bell-schedule.html">Bell Schedule</a>
         </div>
-    </main>
-    <footer><p><strong>West Scranton Intermediate School</strong> | 1401 Fellows Street, Scranton, PA 18504</p></footer>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <div class="table-card">
+      <h2>2024-2025 Bell Schedule</h2>
+      <table>
+        <thead><tr><th>Period</th><th>Start Time</th><th>End Time</th></tr></thead>
+        <tbody>
+          <tr><td>Homeroom</td><td>8:45 AM</td><td>9:05 AM</td></tr>
+          <tr><td>Period 1</td><td>9:07 AM</td><td>10:03 AM</td></tr>
+          <tr><td>Period 2</td><td>10:05 AM</td><td>11:01 AM</td></tr>
+          <tr><td>Period 3</td><td>11:03 AM</td><td>11:33 AM</td></tr>
+          <tr><td>Period 4</td><td>11:35 AM</td><td>11:59 AM</td></tr>
+          <tr><td>Period 5</td><td>12:01 PM</td><td>12:31 PM</td></tr>
+          <tr><td>Period 6</td><td>12:33 PM</td><td>12:57 PM</td></tr>
+          <tr><td>Period 7</td><td>12:59 PM</td><td>1:29 PM</td></tr>
+          <tr><td>Period 8</td><td>1:31 PM</td><td>2:27 PM</td></tr>
+          <tr><td>Period 9</td><td>2:29 PM</td><td>3:25 PM</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-flex">
+      <div><p><strong>West Scranton Intermediate School</strong></p><p>1401 Fellows Street, Scranton, PA 18504</p></div>
+      <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank"><i class="fab fa-facebook"></i> FACEBOOK</a>
+    </div>
+  </footer>
 </body>
 </html>
