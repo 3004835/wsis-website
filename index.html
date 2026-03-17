@@ -1,128 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | West Scranton Intermediate</title>
-  <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* FULL SCREEN RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
-    body { background: #f0f5ff; color: #002868; min-height: 100vh; width: 100%; overflow-x: hidden; display: flex; flex-direction: column; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | West Scranton Intermediate</title>
+    <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* GLOBAL RESET & FULL SCREEN */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; }
+        body { background: #f0f5ff; color: #002868; min-height: 100vh; width: 100%; overflow-x: hidden; display: flex; flex-direction: column; }
 
-    /* HEADER - EDGE TO EDGE */
-    .site-header { position: relative; width: 100%; background: #003399; }
-    .header-bg-link { 
-        display: block; width: 100%; height: 350px; 
-        background: url('https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_5/v1724185898/scrsdorg/dzkyovz3ntzjlbdtdkou/WSIS.jpg') no-repeat center 20%; 
-        background-size: cover; text-decoration: none; 
-    }
-    .header-overlay { 
-        position: absolute; bottom: 0; left: 0; right: 0; 
-        background: linear-gradient(to top, rgba(255,255,255,1) 85%, rgba(255,255,255,0) 100%); 
-        padding: 1.5rem 5%; display: flex; align-items: center; pointer-events: none; 
-    }
-    .logo-container { pointer-events: auto; margin-right: 2rem; z-index: 10; }
-    .logo-img { height: 110px; transition: 0.3s; }
-    .school-title h1 { font-size: 3rem; color: #003399; letter-spacing: -1px; }
+        /* HEADER & TOP BUILDING IMAGE */
+        .site-header { width: 100%; background: white; }
+        .top-building-bg { 
+            width: 100%; 
+            height: 300px; 
+            background: url('https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_5/v1724185898/scrsdorg/dzkyovz3ntzjlbdtdkou/WSIS.jpg') no-repeat center 25%; 
+            background-size: cover;
+        }
 
-    /* NAVBAR & DROPDOWNS */
-    .nav-bar { background: #003399; width: 100%; padding: 0 5%; position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-    .nav-menu { display: flex; list-style: none; }
-    .nav-item { position: relative; }
-    .nav-item > a { display: block; padding: 1.2rem 2rem; color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
-    .nav-item:hover > a { background: #1e4db3; color: #ffd700; }
+        /* BRANDING AREA */
+        .branding {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+        }
+        .logo-img { height: 100px; margin-right: 25px; }
+        .title-group h1 { font-size: 2.8rem; color: #003399; line-height: 1.1; }
+        .title-group p { font-size: 1.2rem; color: #446ab3; font-weight: 600; margin-top: 5px; }
 
-    .dropdown-menu { 
-        position: absolute; top: 100%; left: 0; background: white; min-width: 260px; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.25); opacity: 0; visibility: hidden; 
-        transform: translateY(10px); transition: all 0.3s ease-in-out; 
-        border-top: 5px solid #ffd700; z-index: 10000;
-    }
-    .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .dropdown-menu a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
-    .dropdown-menu a:hover { background: #f0f7ff; color: #1e4db3; padding-left: 2rem; }
+        /* NAVIGATION BAR */
+        .nav-bar { background: #003399; width: 100%; padding: 0 5%; position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .nav-menu { display: flex; list-style: none; }
+        .nav-item { position: relative; }
+        .nav-item > a { display: block; padding: 1.2rem 2rem; color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        .nav-item:hover > a { background: #1e4db3; color: #ffd700; }
 
-    /* CONTENT */
-    main { width: 100%; padding: 5rem 5%; flex: 1; text-align: center; }
-    .hero-container { 
-        background: white; padding: 6rem 2rem; border-radius: 40px; 
-        border: 2px solid #ddecff; max-width: 1200px; margin: 0 auto; 
-        box-shadow: 0 20px 50px rgba(0,40,100,0.08); 
-    }
-    .hero-container h2 { font-size: 3.5rem; color: #003399; margin-bottom: 1rem; }
+        /* DROPDOWN ANIMATION */
+        .dropdown { 
+            position: absolute; top: 100%; left: 0; background: white; min-width: 240px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; 
+            transform: translateY(15px); transition: all 0.3s ease; border-top: 4px solid #ffd700;
+        }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
+        .dropdown a:hover { background: #f8fbff; padding-left: 2rem; }
 
-    /* FOOTER */
-    footer { background: #002868; color: white; padding: 3rem 5%; border-top: 5px solid #ffd700; }
-    .footer-flex { display: flex; justify-content: space-between; align-items: center; }
+        /* HERO SECTION (The Big Box) */
+        main { flex: 1; padding: 5rem 5%; display: flex; flex-direction: column; align-items: center; }
+        .hero-box { 
+            background: white; 
+            width: 100%; 
+            max-width: 1200px; 
+            padding: 6rem 3rem; 
+            border-radius: 50px; 
+            border: 1px solid #d0e0ff; 
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,40,100,0.05);
+        }
+        .hero-box h2 { font-size: 4.5rem; color: #003399; margin-bottom: 1.5rem; }
+        .hero-box p { font-size: 1.6rem; color: #5577b5; }
 
-    /* SCROLL TO TOP */
-    #scrollToTop { 
-        position: fixed; bottom: 30px; right: 30px; background: #ffd700; color: #002868; 
-        width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; 
-        justify-content: center; text-decoration: none; font-size: 1.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 999;
-    }
-  </style>
+        /* FOOTER */
+        footer { background: #002868; color: white; padding: 3rem 5%; border-top: 5px solid #ffd700; margin-top: 50px; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; }
+
+        /* SCROLL BUTTON */
+        #scrollTop { 
+            position: fixed; bottom: 30px; right: 30px; background: #ffd700; color: #002868; 
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; text-decoration: none; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000;
+        }
+    </style>
 </head>
-<body id="top">
-  <header class="site-header">
-    <a href="https://www.wsdwi.org/" class="header-bg-link" target="_blank"></a>
-    <div class="header-overlay">
-      <a href="index.html" class="logo-container">
-        <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img">
-      </a>
-      <div class="school-title">
-        <h1>West Scranton Intermediate</h1>
-        <p style="color:#1e4db3; font-weight:600;">Home of the Invaders · Grades 5-8</p>
-      </div>
+<body>
+
+<header class="site-header">
+    <div class="top-building-bg"></div>
+    <div class="branding">
+        <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img" alt="Invader Logo">
+        <div class="title-group">
+            <h1>West Scranton Intermediate</h1>
+            <p>Home of the Invaders · Grades 5-8</p>
+        </div>
     </div>
     <nav class="nav-bar">
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="index.html">Home</a></li>
-        <li class="nav-item"><a href="about.html">About Us</a></li>
-        <li class="nav-item">
-          <a href="#">Students <i class="fas fa-caret-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="https://clever.com/in/scranton" target="_blank">Clever</a>
-            <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
-            <a href="https://safe2saypa.org" target="_blank">Safe2Say</a>
-            <a href="https://esp41pehac.eschoolplus.powerschool.com/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%3fSiteCode%3dsctlive&SiteCode=sctlive" target="_blank">Home Access</a>
-            <a href="bell-schedule.html">Bell Schedule</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="#">Teachers <i class="fas fa-caret-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn" target="_blank">eSchool PLUS</a>
-            <a href="https://clever.com" target="_blank">Clever</a>
-            <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
-          </div>
-        </li>
-      </ul>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="about.html">About Us</a></li>
+            <li class="nav-item">
+                <a href="#">Students <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                <div class="dropdown">
+                    <a href="https://clever.com/in/scranton" target="_blank">Clever</a>
+                    <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
+                    <a href="bell-schedule.html">Bell Schedule</a>
+                    <a href="https://safe2saypa.org" target="_blank">Safe2Say PA</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#">Teachers <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                <div class="dropdown">
+                    <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn" target="_blank">eSchool PLUS</a>
+                    <a href="https://clever.com" target="_blank">Teacher Clever</a>
+                </div>
+            </li>
+        </ul>
     </nav>
-  </header>
+</header>
 
-  <main>
-    <div class="hero-container">
-      <h2>Welcome to the Invader Home</h2>
-      <p style="font-size:1.4rem; color:#446ab3;">Best school in Scranton, PA, be a role model!</p>
+<main>
+    <div class="hero-box">
+        <h2>Welcome to the Invader Home</h2>
+        <p>Best school in Scranton, PA, be a role model!</p>
     </div>
-    <div style="height:800px;"></div>
-  </main>
+    <div style="height: 600px;"></div>
+</main>
 
-  <footer>
-    <div class="footer-flex">
-      <div>
-        <p><strong>West Scranton Intermediate School</strong></p>
-        <p>1401 Fellows Street, Scranton, PA 18504</p>
-        <p>Phone: 570-348-3475 | Fax: 570-348-3610</p>
-      </div>
-      <a href="https://www.facebook.com/profile.php?id=61550523236671" target="_blank" style="color:#ffd700; text-decoration:none; font-weight:bold; font-size:1.2rem;">
-        <i class="fab fa-facebook"></i> FACEBOOK
-      </a>
+<footer>
+    <div class="footer-content">
+        <div>
+            <p><strong>West Scranton Intermediate School</strong></p>
+            <p>1401 Fellows Street, Scranton, PA 18504</p>
+            <p>Phone: 570-348-3475</p>
+        </div>
+        <a href="https://www.facebook.com/profile.php?id=61550523236671" target="_blank" style="color: #ffd700; text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+            <i class="fab fa-facebook"></i> FACEBOOK
+        </a>
     </div>
-  </footer>
-  <a href="#top" id="scrollToTop"><i class="fas fa-arrow-up"></i></a>
+</footer>
+
+<a href="#" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
+
 </body>
 </html>
