@@ -117,5 +117,35 @@
       <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank"><i class="fab fa-facebook"></i> FACEBOOK</a>
     </div>
   </footer>
+      <script id="js-dropdown">
+document.addEventListener("DOMContentLoaded", function() {
+  // Select all parent links that have a nested dropdown
+  const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
+
+  nestedLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault(); // prevent the # link from navigating
+      const dropdown = this.nextElementSibling;
+
+      // Toggle visibility
+      if (dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+      } else {
+        dropdown.style.display = "block";
+      }
+    });
+  });
+
+  // Optional: close dropdowns when clicking outside
+  document.addEventListener("click", function(e) {
+    nestedLinks.forEach(link => {
+      const dropdown = link.nextElementSibling;
+      if (!link.parentElement.contains(e.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
