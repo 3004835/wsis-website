@@ -1,141 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bell Schedule | West Scranton Intermediate School</title>
-  <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { background: #f0f5ff; color: #002868; min-height: 100vh; display: flex; flex-direction: column; }
-    .branding-bar { background: white; padding: 1.5rem 5%; display: flex; align-items: center; }
-    .logo-img { height: 90px; margin-right: 20px; }
-    .school-title h1 { font-size: 2.8rem; color: #003399; }
-    .school-title p { font-size: 1.1rem; color: #446ab3; font-weight: 600; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bell Schedule | West Scranton Intermediate School</title>
+<link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+  body { background:#f0f5ff; color:#002868; min-height:100vh; display:flex; flex-direction:column; }
+  .branding-bar { background:white; padding:1.5rem 5%; display:flex; align-items:center; }
+  .logo-img { height:90px; margin-right:20px; }
+  .school-title h1 { font-size:2.8rem; color:#003399; }
+  .school-title p { font-size:1.1rem; color:#446ab3; font-weight:600; }
+  .nav-bar { background:#003399; width:100%; padding:0 5%; position:sticky; top:0; z-index:9999; }
+  .nav-menu { display:flex; list-style:none; }
+  .nav-item { position:relative; }
+  .nav-item > a { display:block; padding:1.2rem 2rem; color:white; text-decoration:none; font-weight:700; transition:0.3s; }
+  .nav-item:hover > a { background:#1e4db3; color:#ffd700; }
+  .dropdown { position:absolute; top:100%; left:0; background:white; min-width:260px; box-shadow:0 10px 30px rgba(0,0,0,0.15); opacity:0; visibility:hidden; transform:translateY(10px); transition:0.3s; border-top:4px solid #ffd700; z-index:999; }
+  .nav-item:hover > .dropdown { opacity:1; visibility:visible; transform:translateY(0); }
+  .dropdown a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; border-bottom:1px solid #f0f0f0; }
+  .dropdown a:hover { background:#f8fbff; }
+  .nested-dropdown { position:relative; }
+  .nested-dropdown > a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; }
+  .nested-dropdown > .dropdown { display:none; position:absolute; top:0; left:100%; min-width:260px; background:white; box-shadow:0 10px 30px rgba(0,0,0,0.15); border-top:4px solid #ffd700; }
 
-    /* NAVBAR */
-    .nav-bar { background: #003399; width: 100%; padding: 0 5%; position: sticky; top: 0; z-index: 9999; }
-    .nav-menu { display: flex; list-style: none; }
-    .nav-item { position: relative; }
-    .nav-item > a { display: block; padding: 1.2rem 2rem; color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
-    .nav-item:hover > a { background: #1e4db3; color: #ffd700; }
-
-    /* DROPDOWNS */
-    .dropdown { position: absolute; top: 100%; left: 0; background: white; min-width: 260px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s; border-top: 4px solid #ffd700; }
-    .nav-item:hover > .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-    .dropdown a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
-    .dropdown a:hover { background: #f8fbff; }
-    .dropdown-divider { height:1px; background:#e0e0e0; margin:8px 0; }
-    .dropdown-title { display:block; padding:0.5rem 1.5rem; font-size:0.75rem; font-weight:800; color:#999; text-transform:uppercase; letter-spacing:0.5px; }
-
-    /* NESTED DROPDOWN - CLICK ONLY */
-    .nested-dropdown { position: relative; }
-    .nested-dropdown > a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; }
-    .nested-dropdown > .dropdown { display: none; position: absolute; top: 0; left: 100%; min-width: 260px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-top: 4px solid #ffd700; }
-
-    main { flex: 1; padding: 5rem 5%; display: flex; justify-content: center; }
-    .table-card { background: white; width: 100%; max-width: 1000px; padding: 3rem; border-radius: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
-    .table-card h2 { font-size: 3rem; color: #003399; margin-bottom: 2rem; text-align: center; }
-    table { width: 100%; border-collapse: collapse; }
-    th { background: #003399; color: white; padding: 1.2rem; text-align: left; }
-    td { padding: 1rem; border-bottom: 1px solid #eee; font-weight: 600; color: #333; }
-    tr:nth-child(even) { background: #f9fbff; }
-
-    footer { background: #002868; color: white; padding: 2.5rem 5%; border-top: 5px solid #ffd700; }
-    .footer-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
-    .fb-link { color: #ffd700; text-decoration: none; font-weight: bold; }
-  </style>
+  main { flex:1; padding:5rem 5%; display:flex; justify-content:center; }
+  .table-card { background:white; width:100%; max-width:1000px; padding:3rem; border-radius:40px; box-shadow:0 15px 40px rgba(0,0,0,0.05); }
+  .table-card h2 { font-size:3rem; color:#003399; margin-bottom:2rem; text-align:center; }
+  table { width:100%; border-collapse:collapse; }
+  th { background:#003399; color:white; padding:1.2rem; text-align:left; }
+  td { padding:1rem; border-bottom:1px solid #eee; font-weight:600; color:#333; }
+  tr:nth-child(even) { background:#f9fbff; }
+  footer { background:#002868; color:white; padding:2.5rem 5%; border-top:5px solid #ffd700; }
+  .footer-flex { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; width:100%; }
+  .fb-link { color:#ffd700; text-decoration:none; font-weight:bold; }
+</style>
 </head>
 <body>
-  <div class="branding-bar">
-    <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img">
-    <div class="school-title"><h1>West Scranton Intermediate School</h1><p>Home of the Invaders · Grades 5-8</p></div>
-  </div>
+<div class="branding-bar">
+  <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img">
+  <div class="school-title"><h1>West Scranton Intermediate School</h1><p>Home of the Invaders · Grades 5-8</p></div>
+</div>
 
-  <nav class="nav-bar">
-    <ul class="nav-menu">
-      <li class="nav-item"><a href="index.html">Home</a></li>
-      <li class="nav-item"><a href="about.html">About Us</a></li>
-
-      <!-- Students Dropdown -->
-      <li class="nav-item">
-        <a href="#">Students <i class="fas fa-caret-down"></i></a>
-        <div class="dropdown">
-          <a href="https://clever.com/in/scranton" target="_blank">Clever</a>
-          <a href="https://esp41pehac.eschoolplus.powerschool.com/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%3fSiteCode%3dsctlive&SiteCode=sctlive" target="_blank">Home Access</a>
-          <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
-          <a href="https://safe2saypa.org" target="_blank">Safe2Say</a>
-          <a href="bell-schedule.html">Bell Schedule</a>
-          <a href="https://resources.finalsite.net/images/v1773344365/scrsdorg/bfj9qutowjgldm2k2fvj/SSD2025-26amendedcalendar-version2.pdf">Calendar</a>
-          <a href="search.ymal.space">Ymal Search</a>
-        </div>
-      </li>
-
-      <!-- Teachers Dropdown -->
-      <li class="nav-item">
-        <a href="#">Teachers <i class="fas fa-caret-down"></i></a>
-        <div class="dropdown">
-          <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn" target="_blank">eSchool PLUS</a>
-          <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
-          <a href="https://clever.com" target="_blank">Clever</a>
-          <a href="https://resources.finalsite.net/images/v1773344365/scrsdorg/bfj9qutowjgldm2k2fvj/SSD2025-26amendedcalendar-version2.pdf">Calendar</a>
-
-          <!-- Nested Cheating Detection -->
-          <div class="nested-dropdown">
-            <a href="#">Cheating Detection <i class="fas fa-caret-right"></i></a>
-            <div class="dropdown">
-              <a href="https://www.turnitin.com" target="_blank">Turnitin</a>
-              <a href="https://www.grammarly.com/ai-detector" target="_blank">Grammarly AI Detector</a>
-            </div>
+<nav class="nav-bar">
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="index.html">Home</a></li>
+    <li class="nav-item"><a href="about.html">About Us</a></li>
+    <li class="nav-item">
+      <a href="#">Students <i class="fas fa-caret-down"></i></a>
+      <div class="dropdown">
+        <a href="https://clever.com/in/scranton" target="_blank">Clever</a>
+        <a href="https://esp41pehac.eschoolplus.powerschool.com/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%3fSiteCode%3dsctlive&SiteCode=sctlive" target="_blank">Home Access</a>
+        <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
+        <a href="https://safe2saypa.org" target="_blank">Safe2Say</a>
+        <a href="bell-schedule.html">Bell Schedule</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#">Teachers <i class="fas fa-caret-down"></i></a>
+      <div class="dropdown">
+        <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn" target="_blank">eSchool PLUS</a>
+        <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
+        <a href="https://clever.com" target="_blank">Clever</a>
+        <div class="nested-dropdown">
+          <a href="#">Cheating Detection <i class="fas fa-caret-right"></i></a>
+          <div class="dropdown">
+            <a href="https://www.turnitin.com" target="_blank">Turnitin</a>
+            <a href="https://www.grammarly.com/ai-detector" target="_blank">Grammarly AI Detector</a>
           </div>
         </div>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Bell Schedule Table -->
-  <main>
-    <div class="table-card">
-      <h2>2024-2026 Bell Schedule</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Period / Description</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Length</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Homeroom</td><td>8:45 AM</td><td>9:05 AM</td><td>20 min</td></tr>
-          <tr><td>Period 1</td><td>9:07 AM</td><td>9:54 AM</td><td>47 min</td></tr>
-          <tr><td>Period 2</td><td>9:56 AM</td><td>10:43 AM</td><td>47 min</td></tr>
-          <tr><td>Period 3</td><td>10:45 AM</td><td>11:15 AM</td><td>30 min</td></tr>
-          <tr><td>Period 4</td><td>11:17 AM</td><td>11:34 AM</td><td>17 min</td></tr>
-          <tr><td>Period 5</td><td>11:36 AM</td><td>12:06 PM</td><td>30 min</td></tr>
-          <tr><td>Period 6</td><td>12:08 PM</td><td>12:25 PM</td><td>17 min</td></tr>
-          <tr><td>Period 7</td><td>12:27 PM</td><td>12:57 PM</td><td>30 min</td></tr>
-          <tr><td>Period 8</td><td>12:59 PM</td><td>1:16 PM</td><td>17 min</td></tr>
-          <tr><td>Period 9</td><td>1:18 PM</td><td>1:48 PM</td><td>30 min</td></tr>
-          <tr><td>Period 10</td><td>1:50 PM</td><td>2:37 PM</td><td>47 min</td></tr>
-          <tr><td>Period 11</td><td>2:39 PM</td><td>3:26 PM</td><td>47 min</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </main>
-
-  <footer>
-    <div class="footer-flex">
-      <div>
-        <p><strong>West Scranton Intermediate School</strong></p>
-        <p>1401 Fellows Street, Scranton, PA 18504</p>
       </div>
-      <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank"><i class="fab fa-facebook"></i> FACEBOOK</a>
-    </div>
-  </footer>
+    </li>
+  </ul>
+</nav>
 
-<!-- JS for Nested Dropdown -->
+<main>
+  <div class="table-card">
+    <h2>2024-2026 Bell Schedule</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Period / Description</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Length</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Homeroom</td><td>8:45 AM</td><td>9:05 AM</td><td>20 min</td></tr>
+        <tr><td>Period 1</td><td>9:07 AM</td><td>9:54 AM</td><td>47 min</td></tr>
+        <tr><td>Period 2</td><td>9:56 AM</td><td>10:43 AM</td><td>47 min</td></tr>
+        <tr><td>Period 3</td><td>10:45 AM</td><td>11:15 AM</td><td>30 min</td></tr>
+        <tr><td>Period 4</td><td>11:17 AM</td><td>11:34 AM</td><td>17 min</td></tr>
+        <tr><td>Period 5</td><td>11:36 AM</td><td>12:06 PM</td><td>30 min</td></tr>
+        <tr><td>Period 6</td><td>12:08 PM</td><td>12:25 PM</td><td>17 min</td></tr>
+        <tr><td>Period 7</td><td>12:27 PM</td><td>12:57 PM</td><td>30 min</td></tr>
+        <tr><td>Period 8</td><td>12:59 PM</td><td>1:16 PM</td><td>17 min</td></tr>
+        <tr><td>Period 9</td><td>1:18 PM</td><td>1:48 PM</td><td>30 min</td></tr>
+        <tr><td>Period 10</td><td>1:50 PM</td><td>2:37 PM</td><td>47 min</td></tr>
+        <tr><td>Period 11</td><td>2:39 PM</td><td>3:26 PM</td><td>47 min</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-flex">
+    <div>
+      <p><strong>West Scranton Intermediate School</strong></p>
+      <p>1401 Fellows Street, Scranton, PA 18504</p>
+    </div>
+    <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank"><i class="fab fa-facebook"></i> FACEBOOK</a>
+  </div>
+</footer>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
@@ -143,21 +123,17 @@ document.addEventListener("DOMContentLoaded", function() {
   nestedLinks.forEach(link => {
     link.addEventListener("click", function(e) {
       e.preventDefault();
-      e.stopPropagation(); // Prevent parent dropdown from closing
-
+      e.stopPropagation();
       const dropdown = this.nextElementSibling;
-
-      // Close other nested dropdowns
+      // Close all other nested dropdowns
       document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => {
-        if (d !== dropdown) d.style.display = "none";
+        if(d !== dropdown) d.style.display = "none";
       });
-
-      // Toggle current dropdown
+      // Toggle current
       dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
     });
   });
 
-  // Close all nested dropdowns if clicking outside
   document.addEventListener("click", function() {
     document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => d.style.display = "none");
   });
