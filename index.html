@@ -77,13 +77,15 @@
     opacity: 0.3;            /* barely visible */
 }
 
+/* WSIS Welcome */
+
     .invader-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 40, 90, 0.85);
   display: none;
   justify-content: center;
   align-items: center;
@@ -91,15 +93,21 @@
 }
 
 .invader-box {
-  background: #111;
-  border: 2px solid #00ffcc;
+  background: #ffffff;
+  border: 3px solid #0b5ed7;
   border-radius: 15px;
   padding: 30px;
-  width: 350px;
+  width: 360px;
   text-align: center;
-  color: white;
-  box-shadow: 0 0 20px #00ffcc;
+  color: #0b2a4a;
+  box-shadow: 0 0 25px rgba(11, 94, 215, 0.5);
   animation: fadeIn 0.8s ease;
+}
+
+/* Logo */
+.logo {
+  width: 70px;
+  margin-bottom: 10px;
 }
 
 .invader-box h1 {
@@ -108,18 +116,18 @@
 }
 
 .invader-box .accent {
-  color: #00ffcc;
+  color: #0b5ed7;
 }
 
 .invader-box p {
   font-size: 14px;
-  color: #ccc;
+  color: #333;
 }
 
 .role-model {
   margin-top: 15px;
   font-weight: bold;
-  color: #00ffcc;
+  color: #0b5ed7;
   letter-spacing: 1px;
 }
 
@@ -133,13 +141,14 @@
 
 .actions label {
   font-size: 12px;
-  color: #aaa;
+  color: #555;
   cursor: pointer;
 }
 
 .actions button {
   padding: 8px 18px;
-  background: #00ffcc;
+  background: #0b5ed7;
+  color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -147,7 +156,7 @@
 }
 
 .actions button:hover {
-  background: #00ccaa;
+  background: #084298;
 }
 
 @keyframes fadeIn {
@@ -217,8 +226,13 @@
     </div>
   </main>
 
-  <div id="invaderPopup" class="invader-overlay">
+<div id="invaderPopup" class="invader-overlay">
   <div class="invader-box">
+
+    <!-- Logo -->
+    <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" 
+         alt="Invader Logo" class="logo">
+
     <h1>
       <span>Welcome To</span><br>
       <span class="accent">The House</span><br>
@@ -226,7 +240,7 @@
     </h1>
 
     <p>
-      We glad to see you being part of our<br>
+      We are glad to see you being part of our<br>
       community and being an Invader!
     </p>
 
@@ -240,6 +254,7 @@
 
       <button onclick="closeInvaderPopup()">Enter</button>
     </div>
+
   </div>
 </div>
 
@@ -287,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // PopUP of Welcome Popup
 
-    function closeInvaderPopup() {
+function closeInvaderPopup() {
   const dontShow = document.getElementById("dontShow").checked;
 
   if (dontShow) {
@@ -297,7 +312,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("invaderPopup").style.display = "none";
 }
 
-// Show popup only if not disabled
 window.addEventListener("load", () => {
   const hidden = localStorage.getItem("hideInvaderPopup");
 
