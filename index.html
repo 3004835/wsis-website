@@ -136,34 +136,37 @@
 
   <!-- JS for Nested Dropdown -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
+document.addEventListener("DOMContentLoaded", function() {
+  const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
 
-      nestedLinks.forEach(link => {
-        link.addEventListener("click", function(e) {
-          e.preventDefault();
-          const dropdown = this.nextElementSibling;
+  nestedLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation(); // Prevent parent dropdown from closing
 
-          // Close other nested dropdowns
-          document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => {
-            if (d !== dropdown) d.style.display = "none";
-          });
+      const dropdown = this.nextElementSibling;
 
-          // Toggle current
-          dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-        });
+      // Close other nested dropdowns
+      document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => {
+        if (d !== dropdown) d.style.display = "none";
       });
 
-      // Close nested dropdown if click outside
-      document.addEventListener("click", function(e) {
-        nestedLinks.forEach(link => {
-          const dropdown = link.nextElementSibling;
-          if (!link.parentElement.contains(e.target)) {
-            dropdown.style.display = "none";
-          }
-        });
-      });
+      // Toggle current
+      dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
     });
+  });
+
+  // Close nested dropdown if clicking outside
+  document.addEventListener("click", function(e) {
+    nestedLinks.forEach(link => {
+      const dropdown = link.nextElementSibling;
+      if (!link.parentElement.contains(e.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+  });
+});
+
   </script>
 
 </body>
