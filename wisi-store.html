@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WSIS Web Store - Teacher Extension Hub</title>
+    <title>WSIS Web Store</title>
     <style>
         * {
             margin: 0;
@@ -13,13 +13,13 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #003366 0%, #1a4d8c 100%);
             min-height: 100vh;
             padding: 20px;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
@@ -29,41 +29,22 @@
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,215,0,0.1) 50%, transparent 70%);
-            animation: shine 8s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
         
         .header h1 {
-            color: #1e3c72;
+            color: #003366;
             font-size: 3.5em;
             margin-bottom: 10px;
-            position: relative;
         }
         
         .header h1 span {
             background: #ffd700;
-            color: #1e3c72;
+            color: #003366;
             padding: 5px 20px;
             border-radius: 40px;
-            font-size: 0.4em;
+            font-size: 0.3em;
             vertical-align: middle;
             margin-left: 15px;
             font-weight: bold;
@@ -76,46 +57,10 @@
             margin: 0 auto;
         }
         
-        /* Stats Bar */
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 2px solid #f0f0f0;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #1e3c72;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Search and Filter */
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
+        /* Search */
         .search-box {
-            flex: 1;
             max-width: 400px;
+            margin: 0 auto 40px;
             position: relative;
         }
         
@@ -125,7 +70,7 @@
             border: none;
             border-radius: 30px;
             font-size: 1em;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             background: white;
         }
         
@@ -139,142 +84,70 @@
             color: #999;
         }
         
-        .categories {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .category-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            background: white;
-            color: #1e3c72;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-        }
-        
-        .category-btn:hover {
-            background: #ffd700;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-        
-        .category-btn.active {
-            background: #1e3c72;
-            color: white;
-        }
-        
         /* Extensions Grid */
         .extensions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
         }
         
         .extension-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
         }
         
         .extension-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        .card-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 5px 15px;
-            border-radius: 25px;
-            font-size: 0.8em;
-            font-weight: bold;
-            z-index: 2;
-        }
-        
-        .badge-new {
-            background: #ffd700;
-            color: #1e3c72;
-        }
-        
-        .badge-updated {
-            background: #4caf50;
-            color: white;
-        }
-        
-        .badge-popular {
-            background: #f44336;
-            color: white;
         }
         
         .card-header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #003366, #1a4d8c);
             color: white;
-            padding: 30px 25px;
-            position: relative;
-        }
-        
-        .extension-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            margin-bottom: 15px;
+            padding: 30px;
         }
         
         .extension-name {
-            font-size: 1.5em;
+            font-size: 2em;
             font-weight: bold;
             margin-bottom: 5px;
         }
         
         .extension-meta {
-            display: flex;
-            gap: 15px;
             font-size: 0.9em;
             opacity: 0.9;
         }
         
         .card-body {
-            padding: 25px;
+            padding: 30px;
         }
         
         .extension-description {
-            color: #666;
+            color: #555;
             line-height: 1.6;
-            margin-bottom: 20px;
-            min-height: 80px;
+            margin-bottom: 25px;
+            font-size: 1.1em;
         }
         
         .features {
             list-style: none;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         .features li {
             padding: 8px 0;
-            color: #555;
-            font-size: 0.95em;
+            color: #333;
+            font-size: 1em;
             display: flex;
             align-items: center;
         }
         
         .features li::before {
             content: '✓';
-            color: #4caf50;
+            color: #003366;
             font-weight: bold;
             margin-right: 10px;
             font-size: 1.2em;
@@ -283,17 +156,16 @@
         .install-section {
             display: flex;
             gap: 15px;
-            align-items: center;
         }
         
         .btn-install {
-            flex: 2;
-            padding: 15px 25px;
+            flex: 1;
+            padding: 15px 30px;
             border: none;
             border-radius: 12px;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #003366, #1a4d8c);
             color: white;
-            font-size: 1.1em;
+            font-size: 1.2em;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
@@ -303,85 +175,32 @@
         }
         
         .btn-install:hover {
-            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            background: linear-gradient(135deg, #1a4d8c, #003366);
             transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0,51,102,0.3);
         }
         
-        .btn-install:active {
-            transform: scale(0.98);
-        }
-        
-        .btn-info {
-            flex: 1;
-            padding: 15px;
-            border: none;
+        .btn-preview {
+            padding: 15px 25px;
+            border: 2px solid #003366;
             border-radius: 12px;
-            background: #f8f9fa;
-            color: #1e3c72;
-            font-size: 1.1em;
+            background: white;
+            color: #003366;
+            font-size: 1.2em;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
         }
         
-        .btn-info:hover {
-            background: #e9ecef;
+        .btn-preview:hover {
+            background: #f0f0f0;
         }
         
         .install-count {
             font-size: 0.9em;
             color: #999;
-            margin-top: 10px;
+            margin-top: 15px;
             text-align: right;
-        }
-        
-        /* Featured Section */
-        .featured-section {
-            margin: 40px 0;
-        }
-        
-        .featured-title {
-            color: white;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-        
-        .featured-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .featured-icon {
-            width: 50px;
-            height: 50px;
-            background: #f0f0f0;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-        }
-        
-        .featured-info h4 {
-            color: #1e3c72;
-            margin-bottom: 5px;
-        }
-        
-        .featured-info p {
-            color: #666;
-            font-size: 0.9em;
         }
         
         /* Footer */
@@ -393,20 +212,56 @@
             opacity: 0.9;
         }
         
-        /* Loading animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #1e3c72;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        /* Preview Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .modal-content h3 {
+            color: #003366;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .modal-preview {
+            background: linear-gradient(135deg, #003366, #1a4d8c);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .modal-close {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .modal-close:hover {
+            background: #1a4d8c;
         }
         
         /* Responsive */
@@ -415,22 +270,12 @@
                 font-size: 2.5em;
             }
             
-            .stats-bar {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .featured-grid {
+            .extensions-grid {
                 grid-template-columns: 1fr;
             }
             
-            .toolbar {
+            .install-section {
                 flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .search-box {
-                max-width: 100%;
             }
         }
     </style>
@@ -440,319 +285,86 @@
         <!-- Header -->
         <div class="header">
             <h1>WSIS Web Store <span>TEACHERS</span></h1>
-            <p>Educational extensions built by WSIS students, for WSIS classrooms</p>
-            
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Extensions</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">247</div>
-                    <div class="stat-label">Teacher Installs</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Departments</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">WSIS Built</div>
-                </div>
-            </div>
+            <p>Official extensions for WSIS Chrome browsers</p>
         </div>
         
-        <!-- Search and Categories -->
-        <div class="toolbar">
-            <div class="search-box">
-                <input type="text" placeholder="Search extensions..." id="searchInput">
-            </div>
-            
-            <div class="categories">
-                <button class="category-btn active">All</button>
-                <button class="category-btn">Math</button>
-                <button class="category-btn">English</button>
-                <button class="category-btn">Science</button>
-                <button class="category-btn">History</button>
-                <button class="category-btn">Tools</button>
-            </div>
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" placeholder="Search extensions..." id="searchInput">
         </div>
         
-        <!-- Featured Extensions -->
-        <div class="featured-section">
-            <h2 class="featured-title">⭐ Featured Extensions</h2>
-            <div class="featured-grid">
-                <div class="featured-card">
-                    <div class="featured-icon">📚</div>
-                    <div class="featured-info">
-                        <h4>Study Helper Pro</h4>
-                        <p>Most installed this month</p>
-                    </div>
-                </div>
-                <div class="featured-card">
-                    <div class="featured-icon">🧮</div>
-                    <div class="featured-info">
-                        <h4>Math Step Solver</h4>
-                        <p>New version 2.0</p>
-                    </div>
-                </div>
-                <div class="featured-card">
-                    <div class="featured-icon">🌍</div>
-                    <div class="featured-info">
-                        <h4>History Timeline</h4>
-                        <p>Teacher recommended</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- All Extensions Grid -->
-        <h2 style="color: white; margin: 40px 0 20px;">📦 All Extensions</h2>
-        
+        <!-- Extensions Grid -->
         <div class="extensions-grid" id="extensionsGrid">
-            <!-- Extension 1 -->
-            <div class="extension-card" data-category="tools">
-                <div class="card-badge badge-popular">🔥 POPULAR</div>
+            <!-- Extension 1: WSIS Theme -->
+            <div class="extension-card">
                 <div class="card-header">
-                    <div class="extension-icon">📚</div>
-                    <div class="extension-name">Study Helper Pro</div>
-                    <div class="extension-meta">
-                        <span>v2.1.0</span>
-                        <span>•</span>
-                        <span>86 installs</span>
-                    </div>
+                    <div class="extension-name">WSIS Theme</div>
+                    <div class="extension-meta">Version 1.0.0 • 45 installs</div>
                 </div>
                 <div class="card-body">
                     <div class="extension-description">
-                        Research assistant that helps students organize notes, cite sources, and create bibliographies directly from any webpage.
+                        Transform your Chrome browser with official WSIS colors. Clean blue and white theme that shows your school spirit.
                     </div>
                     <ul class="features">
-                        <li>One-click citations (MLA, APA, Chicago)</li>
-                        <li>Highlight and annotate web pages</li>
-                        <li>Export to Google Docs</li>
-                        <li>Project organization folders</li>
+                        <li>WSIS blue gradient background</li>
+                        <li>Clean white interface elements</li>
+                        <li>Easy on the eyes for long study sessions</li>
+                        <li>Matches school colors perfectly</li>
                     </ul>
                     <div class="install-section">
-                        <a href="extensions/study-helper-pro.crx" class="btn-install" download>📥 Install</a>
-                        <button class="btn-info" onclick="showDetails('study-helper')">ℹ️</button>
+                        <a href="extensions/wsis-theme.crx" class="btn-install" download>📥 Install Theme</a>
+                        <button class="btn-preview" onclick="showPreview('theme')">👁️ Preview</button>
                     </div>
                     <div class="install-count">Updated 2 days ago</div>
                 </div>
             </div>
             
-            <!-- Extension 2 -->
-            <div class="extension-card" data-category="math">
-                <div class="card-badge badge-new">✨ NEW</div>
+            <!-- Extension 2: WSIS Spirit Scrollbar -->
+            <div class="extension-card">
                 <div class="card-header">
-                    <div class="extension-icon">🧮</div>
-                    <div class="extension-name">Math Step Solver</div>
-                    <div class="extension-meta">
-                        <span>v2.0.0</span>
-                        <span>•</span>
-                        <span>54 installs</span>
-                    </div>
+                    <div class="extension-name">WSIS Spirit Scrollbar</div>
+                    <div class="extension-meta">Version 1.0.0 • 38 installs</div>
                 </div>
                 <div class="card-body">
                     <div class="extension-description">
-                        Step-by-step math solutions showing complete work. Perfect for demonstrating problem-solving methods.
+                        Custom scrollbar in school colors. Makes scrolling through webpages more fun with WSIS blue and white styling.
                     </div>
                     <ul class="features">
-                        <li>Algebra I & II, Calculus, Trig</li>
-                        <li>Shows complete step-by-step work</li>
-                        <li>Practice problem generator</li>
-                        <li>Graphing calculator integration</li>
+                        <li>Custom blue scrollbar track</li>
+                        <li>White scrollbar thumb with blue accent</li>
+                        <li>Smooth scrolling animation</li>
+                        <li>Works on all websites</li>
                     </ul>
                     <div class="install-section">
-                        <a href="extensions/math-solver.crx" class="btn-install" download>📥 Install</a>
-                        <button class="btn-info" onclick="showDetails('math-solver')">ℹ️</button>
+                        <a href="extensions/wsis-scrollbar.crx" class="btn-install" download>📥 Install Scrollbar</a>
+                        <button class="btn-preview" onclick="showPreview('scrollbar')">👁️ Preview</button>
                     </div>
-                    <div class="install-count">Updated today</div>
-                </div>
-            </div>
-            
-            <!-- Extension 3 -->
-            <div class="extension-card" data-category="english">
-                <div class="card-badge badge-updated">🔄 UPDATED</div>
-                <div class="card-header">
-                    <div class="extension-icon">📖</div>
-                    <div class="extension-name">Vocabulary Builder</div>
-                    <div class="extension-meta">
-                        <span>v1.5.0</span>
-                        <span>•</span>
-                        <span>42 installs</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="extension-description">
-                        Context-based vocabulary learning. Double-click any word for instant definitions, examples, and study lists.
-                    </div>
-                    <ul class="features">
-                        <li>Double-click any word for definition</li>
-                        <li>Save to personal vocabulary list</li>
-                        <li>Spaced repetition flashcards</li>
-                        <li>Quiz generator</li>
-                    </ul>
-                    <div class="install-section">
-                        <a href="extensions/vocab-builder.crx" class="btn-install" download>📥 Install</a>
-                        <button class="btn-info" onclick="showDetails('vocab-builder')">ℹ️</button>
-                    </div>
-                    <div class="install-count">Updated last week</div>
-                </div>
-            </div>
-            
-            <!-- Extension 4 -->
-            <div class="extension-card" data-category="science">
-                <div class="card-header">
-                    <div class="extension-icon">🔬</div>
-                    <div class="extension-name">Periodic Table Helper</div>
-                    <div class="extension-meta">
-                        <span>v1.2.0</span>
-                        <span>•</span>
-                        <span>31 installs</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="extension-description">
-                        Interactive periodic table with element details, electron configurations, and practice quizzes.
-                    </div>
-                    <ul class="features">
-                        <li>Click any element for detailed info</li>
-                        <li>Electron configuration visualizer</li>
-                        <li>Practice quizzes by element group</li>
-                        <li>Chemical equation balancer</li>
-                    </ul>
-                    <div class="install-section">
-                        <a href="extensions/periodic-table.crx" class="btn-install" download>📥 Install</a>
-                        <button class="btn-info" onclick="showDetails('periodic-table')">ℹ️</button>
-                    </div>
-                    <div class="install-count">Updated 3 weeks ago</div>
-                </div>
-            </div>
-            
-            <!-- Extension 5 -->
-            <div class="extension-card" data-category="history">
-                <div class="card-header">
-                    <div class="extension-icon">🏛️</div>
-                    <div class="extension-name">History Timeline</div>
-                    <div class="extension-meta">
-                        <span>v1.0.0</span>
-                        <span>•</span>
-                        <span>28 installs</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="extension-description">
-                        Interactive historical timeline with primary sources, images, and key event descriptions.
-                    </div>
-                    <ul class="features">
-                        <li>Scrollable world history timeline</li>
-                        <li>Primary source documents</li>
-                        <li>Biography cards for key figures</li>
-                        <li>Create custom timelines</li>
-                    </ul>
-                    <div class="install-section">
-                        <a href="extensions/history-timeline.crx" class="btn-install" download>📥 Install</a>
-                        <button class="btn-info" onclick="showDetails('history-timeline')">ℹ️</button>
-                    </div>
-                    <div class="install-count">New extension</div>
-                </div>
-            </div>
-            
-            <!-- Extension 6 -->
-            <div class="extension-card" data-category="tools">
-                <div class="card-header">
-                    <div class="extension-icon">⏱️</div>
-                    <div class="extension-name">Classroom Timer</div>
-                    <div class="extension-meta">
-                        <span>v1.3.0</span>
-                        <span>•</span>
-                        <span>67 installs</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="extension-description">
-                        Multiple timers, countdowns, and stopwatches for classroom activities and tests.
-                    </div>
-                    <ul class="features">
-                        <li>Multiple simultaneous timers</li>
-                        <li>Visual and audio alerts</li>
-                        <li>Save preset times for activities</li>
-                        <li>Fullscreen mode</li>
-                    </ul>
-                    <div class="install-section">
-                        <a href="extensions/classroom-timer.crx" class="btn-install" download>📥 Install</a>
-                        <button class="btn-info" onclick="showDetails('classroom-timer')">ℹ️</button>
-                    </div>
-                    <div class="install-count">Teacher favorite</div>
+                    <div class="install-count">Updated 2 days ago</div>
                 </div>
             </div>
         </div>
         
-        <!-- Teacher Resources Section -->
-        <div style="background: white; border-radius: 20px; padding: 30px; margin: 40px 0;">
-            <h2 style="color: #1e3c72; margin-bottom: 25px;">👩‍🏫 Teacher Resources</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <div style="padding: 20px; background: #f8f9fa; border-radius: 12px;">
-                    <div style="font-size: 2em; margin-bottom: 10px;">💡</div>
-                    <h4>Request an Extension</h4>
-                    <p style="color: #666; margin: 10px 0;">Need something specific for your classes?</p>
-                    <button style="background: none; border: 2px solid #1e3c72; color: #1e3c72; padding: 8px 20px; border-radius: 25px; cursor: pointer;">Submit Request</button>
-                </div>
-                
-                <div style="padding: 20px; background: #f8f9fa; border-radius: 12px;">
-                    <div style="font-size: 2em; margin-bottom: 10px;">🐛</div>
-                    <h4>Report an Issue</h4>
-                    <p style="color: #666; margin: 10px 0;">Help us improve by reporting bugs</p>
-                    <button style="background: none; border: 2px solid #1e3c72; color: #1e3c72; padding: 8px 20px; border-radius: 25px; cursor: pointer;">Report Bug</button>
-                </div>
-                
-                <div style="padding: 20px; background: #f8f9fa; border-radius: 12px;">
-                    <div style="font-size: 2em; margin-bottom: 10px;">📊</div>
-                    <h4>Usage Analytics</h4>
-                    <p style="color: #666; margin: 10px 0;">See which extensions your department uses</p>
-                    <button style="background: none; border: 2px solid #1e3c72; color: #1e3c72; padding: 8px 20px; border-radius: 25px; cursor: pointer;">View Stats</button>
-                </div>
-                
-                <div style="padding: 20px; background: #f8f9fa; border-radius: 12px;">
-                    <div style="font-size: 2em; margin-bottom: 10px;">📝</div>
-                    <h4>Student Feedback</h4>
-                    <p style="color: #666; margin: 10px 0;">See what students think</p>
-                    <button style="background: none; border: 2px solid #1e3c72; color: #1e3c72; padding: 8px 20px; border-radius: 25px; cursor: pointer;">View Feedback</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Recent Activity -->
-        <div style="background: linear-gradient(135deg, #667eea20, #764ba220); border-radius: 20px; padding: 25px; margin: 40px 0; backdrop-filter: blur(10px);">
-            <h3 style="color: white; margin-bottom: 20px;">📢 Recent Activity</h3>
-            
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <div style="background: white; padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <span style="background: #4caf50; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em;">NEW</span>
-                    <span>Math Step Solver v2.0 released with graphing calculator</span>
-                    <span style="color: #999; margin-left: auto;">2 hours ago</span>
-                </div>
-                
-                <div style="background: white; padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <span style="background: #2196f3; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em;">UPDATE</span>
-                    <span>Study Helper Pro now integrates with Google Classroom</span>
-                    <span style="color: #999; margin-left: auto;">Yesterday</span>
-                </div>
-                
-                <div style="background: white; padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <span style="background: #ff9800; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em;">MILESTONE</span>
-                    <span>250 total teacher installs! Thank you!</span>
-                    <span style="color: #999; margin-left: auto;">3 days ago</span>
-                </div>
-            </div>
+        <!-- Simple Note -->
+        <div style="background: rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; text-align: center; color: white; margin: 20px 0;">
+            <p style="font-size: 0.9em;">✨ Both extensions work together perfectly. Install both for the full WSIS experience!</p>
         </div>
         
         <!-- Footer -->
         <footer>
-            <p>WSIS Web Store • Built by students, for WSIS teachers • Questions? Contact the CS Club in room 204</p>
-            <p style="font-size: 0.9em; margin-top: 10px;">© 2025 WSIS • All extensions are school property</p>
+            <p>WSIS Web Store • Built by students, for WSIS • Questions? See the CS Club</p>
+            <p style="font-size: 0.8em; margin-top: 10px;">© 2025 WSIS • Official school extensions</p>
         </footer>
+    </div>
+    
+    <!-- Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <h3 id="modalTitle">WSIS Theme</h3>
+            <div class="modal-preview" id="modalPreview">
+                <!-- Preview content will be inserted here -->
+            </div>
+            <button class="modal-close" onclick="closePreview()">Close Preview</button>
+        </div>
     </div>
     
     <script>
@@ -773,34 +385,71 @@
             });
         });
         
-        // Category filtering
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active button
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+        // Preview functionality
+        function showPreview(type) {
+            const modal = document.getElementById('previewModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalPreview = document.getElementById('modalPreview');
+            
+            if (type === 'theme') {
+                modalTitle.textContent = 'WSIS Theme Preview';
+                modalPreview.innerHTML = `
+                    <div style="background: white; border-radius: 8px; overflow: hidden;">
+                        <div style="background: linear-gradient(135deg, #003366, #1a4d8c); height: 60px;"></div>
+                        <div style="padding: 20px; background: white;">
+                            <div style="background: #f0f0f0; height: 20px; width: 60%; margin-bottom: 10px;"></div>
+                            <div style="background: #f0f0f0; height: 20px; width: 80%; margin-bottom: 10px;"></div>
+                            <div style="background: #f0f0f0; height: 20px; width: 40%;"></div>
+                        </div>
+                    </div>
+                    <p style="color: white; margin-top: 15px;">Blue gradient header • Clean white background</p>
+                `;
+            } else {
+                modalTitle.textContent = 'WSIS Spirit Scrollbar Preview';
+                modalPreview.innerHTML = `
+                    <div style="background: #f0f0f0; border-radius: 10px; padding: 20px; text-align: left;">
+                        <div style="background: white; height: 200px; overflow-y: scroll; padding: 10px; border-radius: 5px;" id="scrollDemo">
+                            <div style="height: 30px; margin-bottom: 10px; background: #e0e0e0;"></div>
+                            <div style="height: 30px; margin-bottom: 10px; background: #e0e0e0;"></div>
+                            <div style="height: 30px; margin-bottom: 10px; background: #e0e0e0;"></div>
+                            <div style="height: 30px; margin-bottom: 10px; background: #e0e0e0;"></div>
+                            <div style="height: 30px; margin-bottom: 10px; background: #e0e0e0;"></div>
+                        </div>
+                    </div>
+                    <p style="color: white; margin-top: 15px;">Blue scrollbar track • White thumb</p>
+                `;
                 
-                const category = this.textContent.toLowerCase();
-                const cards = document.querySelectorAll('.extension-card');
-                
-                cards.forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
+                // Add custom scrollbar styling to demo
+                const style = document.createElement('style');
+                style.textContent = `
+                    #scrollDemo::-webkit-scrollbar {
+                        width: 12px;
                     }
-                });
-            });
-        });
-        
-        // Details modal function
-        function showDetails(extensionId) {
-            alert('Extension details:\n\nDeveloper: WSIS Student Team\nDocumentation: Available on request\nSupport: See CS Club');
+                    #scrollDemo::-webkit-scrollbar-track {
+                        background: #003366;
+                    }
+                    #scrollDemo::-webkit-scrollbar-thumb {
+                        background: white;
+                        border-radius: 6px;
+                        border: 2px solid #003366;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            modal.style.display = 'flex';
         }
         
-        // Smooth scroll to top
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function closePreview() {
+            document.getElementById('previewModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('previewModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
         }
     </script>
 </body>
