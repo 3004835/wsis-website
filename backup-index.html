@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | West Scranton Intermediate School</title>
+  <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: #f0f5ff; color: #002868; min-height: 100vh; width: 100%; display: flex; flex-direction: column; }
+
+    /* CLEAN WHITE BRANDING */
+    .branding-bar { background: white; padding: 1.5rem 5%; display: flex; align-items: center; }
+    .logo-img { height: 90px; margin-right: 20px; }
+    .school-title h1 { font-size: 2.8rem; color: #003399; line-height: 1.1; }
+    .school-title p { font-size: 1.1rem; color: #446ab3; font-weight: 600; }
+
+    /* NAVBAR */
+    .nav-bar { background: #003399; width: 100%; padding: 0 5%; position: sticky; top: 0; z-index: 9999; }
+    .nav-menu { display: flex; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-item > a { display: block; padding: 1.2rem 2rem; color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
+    .nav-item:hover > a { background: #1e4db3; color: #ffd700; }
+
+    /* DROPDOWNS */
+    .dropdown { position: absolute; top: 100%; left: 0; background: white; min-width: 260px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s; border-top: 4px solid #ffd700; }
+    .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
+    .dropdown a:hover { background: #f8fbff; }
+    .dropdown-divider { height:1px; background:#e0e0e0; margin:8px 0; }
+    .dropdown-title { display:block; padding:0.5rem 1.5rem; font-size:0.75rem; font-weight:800; color:#999; text-transform:uppercase; letter-spacing:0.5px; }
+
+    /* Position nested dropdown to the right */
+.nested-dropdown { position: relative; }
+.nested-dropdown > a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; }
+.nested-dropdown:hover > a { background: #f8fbff; }
+.nested-dropdown .dropdown {
+  top: 0;
+  left: 100%; /* makes it appear to the right */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0);
+  transition: 0.3s;
+}
+.nested-dropdown:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+    /* HERO SECTION - BUILDING IMAGE HERE ONLY */
+    main { flex: 1; padding: 5rem 5%; display: flex; justify-content: center; align-items: center; }
+    .hero-box { 
+      width: 100%; max-width: 1200px; min-height: 500px; border-radius: 50px; overflow: hidden; position: relative; display: flex; justify-content: center; align-items: center; text-align: center;
+      background: linear-gradient(rgba(0,40,100,0.65), rgba(0,40,100,0.65)), url('https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_5/v1724185898/scrsdorg/dzkyovz3ntzjlbdtdkou/WSIS.jpg');
+      background-size: cover; background-position: center; box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+    .hero-content h2 { font-size: 4.5rem; color: white; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+    .hero-content p { font-size: 1.8rem; color: white; font-weight: 300; }
+
+    /* FOOTER */
+    footer { background: #002868; color: white; padding: 2.5rem 5%; border-top: 5px solid #ffd700; }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .fb-link { color: #ffd700; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <div class="branding-bar">
+    <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img">
+    <div class="school-title"><h1>West Scranton Intermediate School</h1><p>Home of the Invaders · Grades 5-8</p></div>
+  </div>
+  <nav class="nav-bar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item"><a href="about.html">About Us</a></li>
+      <li class="nav-item">
+        <a href="#">Students <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown">
+          <a href="https://clever.com/in/scranton" target="_blank">Clever</a>
+          <a href="https://esp41pehac.eschoolplus.powerschool.com/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%3fSiteCode%3dsctlive&SiteCode=sctlive" target="_blank">Home Access</a>
+          <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
+          <a href="https://safe2saypa.org" target="_blank">Safe2Say</a>
+          <a href="bell-schedule.html">Bell Schedule</a>
+          <a href="https://resources.finalsite.net/images/v1773344365/scrsdorg/bfj9qutowjgldm2k2fvj/SSD2025-26amendedcalendar-version2.pdf">Calendar</a>
+          <a href="search.ymal.space">Ymal Search</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Teachers <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown">
+          <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn" target="_blank">eSchool PLUS</a>
+          <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
+          <a href="https://clever.com" target="_blank">Clever</a>
+          <a href="https://teacher.blocksi.net/">Blocksi</a>
+          <a href="https://resources.finalsite.net/images/v1773344365/scrsdorg/bfj9qutowjgldm2k2fvj/SSD2025-26amendedcalendar-version2.pdf">Calendar</a>
+    <!-- NESTED DROPDOWN -->
+    <div class="nav-item nested-dropdown">
+      <a href="#">Cheating Detection <i class="fas fa-caret-right"></i></a>
+      <div class="dropdown">
+        <a href="https://www.turnitin.com" target="_blank">Turnitin</a>
+        <a href="https://www.grammarly.com/ai-detector" target="_blank">Grammarly AI Detector</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <div class="hero-box">
+      <div class="hero-content">
+        <h2>Welcome to the Invader Home</h2>
+        <p>Best school in Scranton, PA, be a role model!</p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-flex">
+      <div><p><strong>West Scranton Intermediate School</strong></p><p>1401 Fellows Street, Scranton, PA 18504</p><p>Phone: 570-348-3475</p></div>
+      <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank"><i class="fab fa-facebook"></i> FACEBOOK</a>
+    </div>
+  </footer>
+      <script id="js-dropdown">
+document.addEventListener("DOMContentLoaded", function() {
+  // Select all parent links that have a nested dropdown
+  const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
+
+  nestedLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault(); // prevent the # link from navigating
+      const dropdown = this.nextElementSibling;
+
+      // Toggle visibility
+      if (dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+      } else {
+        dropdown.style.display = "block";
+      }
+    });
+  });
+
+  // Optional: close dropdowns when clicking outside
+  document.addEventListener("click", function(e) {
+    nestedLinks.forEach(link => {
+      const dropdown = link.nextElementSibling;
+      if (!link.parentElement.contains(e.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
