@@ -7,58 +7,56 @@
   <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: #f0f5ff; color: #002868; min-height: 100vh; display: flex; flex-direction: column; }
-    
-    /* BRANDING & NAV */
-    .branding-bar { background: white; padding: 1.5rem 5%; display: flex; align-items: center; }
-    .logo-img { height: 90px; margin-right: 20px; }
-    .school-title h1 { font-size: 2.8rem; color: #003399; line-height: 1.1; }
-    .school-title p { font-size: 1.1rem; color: #446ab3; font-weight: 600; }
-    
-    .nav-bar { background: #003399; width: 100%; padding: 0 5%; position: sticky; top: 0; z-index: 9999; }
-    .nav-menu { display: flex; list-style: none; }
-    .nav-item { position: relative; }
-    .nav-item > a { display: block; padding: 1.2rem 2rem; color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
-    .nav-item:hover > a { background: #1e4db3; color: #ffd700; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+    body { background:#f0f5ff; color:#002868; min-height:100vh; display:flex; flex-direction:column; }
 
-    .dropdown { position: absolute; top: 100%; left: 0; background: white; min-width: 260px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s; border-top: 4px solid #ffd700; }
-    .nav-item:hover > .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-    .dropdown a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
-    .dropdown a:hover { background: #f8fbff; }
-    .dropdown-divider { height:1px; background:#e0e0e0; margin:8px 0; }
-    .dropdown-title { display:block; padding:0.5rem 1.5rem; font-size:0.75rem; font-weight:800; color:#999; text-transform:uppercase; letter-spacing:0.5px; }
+    /* BRANDING */
+    .branding-bar { background:white; padding:1.5rem 5%; display:flex; align-items:center; }
+    .logo-img { height:90px; margin-right:20px; }
+    .school-title h1 { font-size:2.8rem; color:#003399; line-height:1.1; }
+    .school-title p { font-size:1.1rem; color:#446ab3; font-weight:600; }
 
-    /* NESTED DROPDOWN - CLICK ONLY */
-    .nested-dropdown { position: relative; }
-    .nested-dropdown > a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; }
-    .nested-dropdown > .dropdown { display: none; position: absolute; top: 0; left: 100%; min-width: 260px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-top: 4px solid #ffd700; }
+    /* NAVBAR */
+    .nav-bar { background:#003399; width:100%; padding:0 5%; position:sticky; top:0; z-index:9999; }
+    .nav-menu { display:flex; list-style:none; }
+    .nav-item { position:relative; }
+    .nav-item > a { display:block; padding:1.2rem 2rem; color:white; text-decoration:none; font-weight:700; transition:0.3s; }
+    .nav-item:hover > a { background:#1e4db3; color:#ffd700; }
+
+    /* DROPDOWNS */
+    .dropdown { position:absolute; top:100%; left:0; background:white; min-width:260px; box-shadow:0 10px 30px rgba(0,0,0,0.15); opacity:0; visibility:hidden; transform:translateY(10px); transition:0.3s; border-top:4px solid #ffd700; z-index:1000; }
+    .nav-item:hover > .dropdown { opacity:1; visibility:visible; transform:translateY(0); }
+    .dropdown a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; border-bottom:1px solid #f0f0f0; }
+    .dropdown a:hover { background:#f8fbff; }
+
+    /* NESTED DROPDOWN */
+    .nested-dropdown { position:relative; }
+    .nested-dropdown > a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; cursor:pointer; }
+    .nested-dropdown > a:hover { background:#f8fbff; }
+    .nested-dropdown-menu { display:none; position:absolute; top:0; left:100%; min-width:260px; background:white; box-shadow:0 10px 30px rgba(0,0,0,0.15); border-top:4px solid #ffd700; z-index:1001; }
+    .nested-dropdown-menu a { padding:1rem 1.5rem; border-bottom:1px solid #f0f0f0; }
+    .nested-dropdown-menu a:hover { background:#f8fbff; }
 
     /* CONTENT CARD */
-    main { flex: 1; padding: 4rem 5%; display: flex; justify-content: center; }
-    .about-card { background: white; width: 100%; max-width: 1100px; padding: 4rem; border-radius: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
-    
-    .about-card h2 { font-size: 3.2rem; color: #003399; margin-bottom: 2rem; border-bottom: 5px solid #ffd700; display: inline-block; padding-bottom: 5px; }
-    .about-card h3 { font-size: 1.8rem; color: #003399; margin: 2.5rem 0 1rem 0; }
-    .about-card p { font-size: 1.25rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem; text-align: justify; }
+    main { flex:1; padding:4rem 5%; display:flex; justify-content:center; }
+    .about-card { background:white; width:100%; max-width:1100px; padding:4rem; border-radius:40px; box-shadow:0 15px 40px rgba(0,0,0,0.05); }
+    .about-card h2 { font-size:3.2rem; color:#003399; margin-bottom:2rem; border-bottom:5px solid #ffd700; display:inline-block; padding-bottom:5px; }
+    .about-card h3 { font-size:1.8rem; color:#003399; margin:2.5rem 0 1rem 0; }
+    .about-card p { font-size:1.25rem; line-height:1.8; color:#333; margin-bottom:1.5rem; text-align:justify; }
 
     /* FOOTER */
-    footer { background: #002868; color: white; padding: 2.5rem 5%; border-top: 5px solid #ffd700; }
-    .footer-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
-    .fb-link { color: #ffd700; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
-    .fb-link i { margin-right: 8px; }
+    footer { background:#002868; color:white; padding:2.5rem 5%; border-top:5px solid #ffd700; }
+    .footer-flex { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; width:100%; }
+    .fb-link { color:#ffd700; text-decoration:none; font-weight:bold; font-size:1.1rem; }
   </style>
 </head>
 <body>
-
   <div class="branding-bar">
     <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img" alt="WSIS Logo">
-    <div class="school-title">
-      <h1>West Scranton Intermediate School</h1>
-      <p>Home of the Invaders · Grades 5-8</p>
-    </div>
+    <div class="school-title"><h1>West Scranton Intermediate School</h1><p>Home of the Invaders · Grades 5-8</p></div>
   </div>
 
+  <!-- NAVBAR -->
   <nav class="nav-bar">
     <ul class="nav-menu">
       <li class="nav-item"><a href="index.html">Home</a></li>
@@ -85,12 +83,13 @@
           <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn" target="_blank">eSchool PLUS</a>
           <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
           <a href="https://clever.com" target="_blank">Clever</a>
+          <a href="https://teacher.blocksi.net/">Blocksi</a>
           <a href="https://resources.finalsite.net/images/v1773344365/scrsdorg/bfj9qutowjgldm2k2fvj/SSD2025-26amendedcalendar-version2.pdf">Calendar</a>
 
-          <!-- Nested Cheating Detection -->
+          <!-- Nested Dropdown -->
           <div class="nested-dropdown">
             <a href="#">Cheating Detection <i class="fas fa-caret-right"></i></a>
-            <div class="dropdown">
+            <div class="nested-dropdown-menu">
               <a href="https://www.turnitin.com" target="_blank">Turnitin</a>
               <a href="https://www.grammarly.com/ai-detector" target="_blank">Grammarly AI Detector</a>
             </div>
@@ -100,36 +99,39 @@
     </ul>
   </nav>
 
+  <!-- CONTENT -->
   <main>
     <div class="about-card">
       <h2>About Us!</h2>
-      <p>Welcome to West Scranton Intermediate School, where the spirit of the Invader shines bright! We’re thrilled to introduce you to our warm, energetic school community. Situated in the lively city of Scranton, PA, our school serves students in grades 5 through 8, providing a supportive atmosphere where young minds are encouraged to explore, innovate, and feed their curiosity.</p>
+      <p>Welcome to West Scranton Intermediate School, where the spirit of the Invader shines bright! We’re thrilled to introduce you to our warm, energetic school community. Situated in Scranton, PA, our school serves students in grades 5–8, providing a supportive atmosphere for exploration and learning.</p>
 
       <h3>A Glimpse of Our History</h3>
-      <p>West Scranton Intermediate School has long been a cornerstone of educational excellence in the Scranton community. Our beloved mascot, the Invader, symbolizes our collective spirit of resilience, exploration, and continuous growth—values that we carry from our rich past into our present-day educational journey.</p>
-      
+      <p>West Scranton Intermediate School has long been a cornerstone of educational excellence. Our mascot, the Invader, symbolizes resilience, exploration, and continuous growth—values we carry from our past into the present.</p>
+
       <h3>Exciting Renovations Underway</h3>
-      <p>We're embarking on a new chapter as our school undergoes a comprehensive renovation, set for completion in 2025. This transformation signifies our commitment to providing the best facilities for our young Invaders. The renovation will modernize every classroom, upgrade our technological capabilities, and reinvigorate our common areas, creating a state-of-the-art learning environment.</p>
+      <p>Our school is undergoing renovations to modernize classrooms, technology, and common areas—creating a state-of-the-art learning environment for our students, set to complete in 2025.</p>
 
       <h3>Our Philosophy</h3>
-      <p>At West Scranton Intermediate, we're dedicated to creating a nurturing, inclusive learning environment. Our passionate educators are committed to understanding and respecting each student's individuality, offering diverse learning experiences that cater to different strengths and interests. This philosophy ensures each Invader feels valued and inspired.</p>
-      
+      <p>We aim to create a nurturing, inclusive environment. Our educators respect each student’s individuality and offer diverse learning experiences to ensure every Invader feels valued and inspired.</p>
+
       <h3>The Invader Experience</h3>
-      <p>While our building is transforming, our heart remains the same. Students are enjoying a temporary setting that replicates the caring, engaging environment our school is known for. We continue to offer a wide range of subjects and extracurricular activities, from arts and sports to clubs that promote leadership and community spirit.</p>
+      <p>Even during renovations, our temporary setting replicates our caring, engaging environment. We continue to offer a variety of subjects and extracurricular activities, from arts to leadership clubs.</p>
 
       <h3>Community Connection</h3>
-      <p>Our connection to Scranton is deep and heartfelt. We regularly organize events that unite students, families, and staff with the broader community. Our local partnerships and community service projects emphasize the importance of civic engagement, instilling a sense of communal pride in our students.</p>
+      <p>We organize events and projects connecting students, families, and the wider Scranton community, fostering civic pride and engagement.</p>
 
       <h3>Join Our Journey</h3>
-      <p>We extend a warm invitation to join the Invader family. For more information or any inquiries, please don’t hesitate to reach out to us. Together, we look forward to embracing a future where every Invader can thrive!</p>
+      <p>We invite everyone to join the Invader family. For more information, feel free to reach out. Together, we look forward to a future where every Invader can thrive!</p>
     </div>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-flex">
       <div>
         <p><strong>West Scranton Intermediate School</strong></p>
         <p>1401 Fellows Street, Scranton, PA 18504</p>
+        <p>Phone: 570-348-3475</p>
       </div>
       <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank">
         <i class="fab fa-facebook"></i> FACEBOOK
@@ -137,38 +139,20 @@
     </div>
   </footer>
 
-  <!-- JS for Nested Dropdown -->
+  <!-- JS Nested Dropdown -->
   <script>
 document.addEventListener("DOMContentLoaded", function() {
   const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
-
   nestedLinks.forEach(link => {
     link.addEventListener("click", function(e) {
       e.preventDefault();
-      e.stopPropagation(); // Prevent parent dropdown from closing
-
-      const dropdown = this.nextElementSibling;
-
-      // Close other nested dropdowns
-      document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => {
-        if (d !== dropdown) d.style.display = "none";
-      });
-
-      // Toggle current
-      dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+      e.stopPropagation();
+      const menu = this.nextElementSibling;
+      document.querySelectorAll(".nested-dropdown-menu").forEach(m => { if(m!==menu)m.style.display="none"; });
+      menu.style.display = (menu.style.display==="block")?"none":"block";
     });
   });
-
-  // Close nested dropdown if clicking outside
-  document.addEventListener("click", function(e) {
-    nestedLinks.forEach(link => {
-      const dropdown = link.nextElementSibling;
-      if (!link.parentElement.contains(e.target)) {
-        dropdown.style.display = "none";
-      }
-    });
-  });
-});
+  document.addEventListener("click", function() { document.querySelectorAll(".nested-dropdown-menu").forEach(m=>m.style.display="none"); });
 });
   </script>
 
