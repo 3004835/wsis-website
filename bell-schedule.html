@@ -55,6 +55,29 @@
   footer { background:#002868; color:white; padding:2.5rem 5%; border-top:5px solid #ffd700; }
   .footer-flex { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; width:100%; }
   .fb-link { color:#ffd700; text-decoration:none; font-weight:bold; }
+
+ /* LIVE COUNTDOWN */
+.countdown-box {
+  background:#003399;
+  color:white;
+  padding:1.5rem;
+  border-radius:20px;
+  text-align:center;
+  margin-bottom:2rem;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.countdown-box h3 {
+  font-size:1.5rem;
+  margin-bottom:0.5rem;
+}
+
+.countdown-time {
+  font-size:2.5rem;
+  font-weight:800;
+  color:#ffd700;
+}
+ 
 </style>
 </head>
 <body>
@@ -98,6 +121,10 @@
 <main>
   <div class="table-card">
     <h2>2024-2026 Bell Schedule</h2>
+   <div class="countdown-box">
+  <h3 id="currentPeriod">Loading...</h3>
+  <div class="countdown-time" id="countdown">--:--</div>
+</div>
     <table>
       <thead>
         <tr>
@@ -137,6 +164,8 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+
+  // ===== NESTED DROPDOWN (keep working) =====
   const nestedItems = document.querySelectorAll(".nested-dropdown");
 
   nestedItems.forEach(item => {
@@ -146,20 +175,108 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       e.stopPropagation();
 
-      // Close others
       nestedItems.forEach(i => {
         if (i !== item) i.classList.remove("active");
       });
 
-      // Toggle current
       item.classList.toggle("active");
     });
   });
 
-  // Click outside = close
   document.addEventListener("click", function () {
     nestedItems.forEach(item => item.classList.remove("active"));
   });
+
+  // ===== BELL SCHEDULE WITH 2 MIN PASSING =====
+  const schedule = [
+    { name: "Homeroom", start: "08:45", end: "09:05" },
+    { name: "Passing", start: "09:05", end: "09:07" },
+
+    { name: "Period 1", start: "09:07", end: "09:54" },
+    { name: "Passing", start: "09:54", end: "09:56" },
+
+    { name: "Period 2", start: "09:56", end: "10:43" },
+    { name: "Passing", start: "10:43", end: "10:45" },
+
+    { name: "Period 3", start: "10:45", end: "11:15" },
+    { name: "Passing", start: "11:15", end: "11:17" },
+
+    { name: "Period 4", start: "11:17", end: "11:34" },
+    { name: "Passing", start: "11:34", end: "11:36" },
+
+    { name: "Period 5", start: "11:36", end: "12:06" },
+    { name: "Passing", start: "12:06", end: "12:08" },
+
+    { name: "Period 6", start: "12:08", end: "12:25" },
+    { name: "Passing", start: "12:25", end: "12:27" },
+
+    { name: "Period 7", start: "12:27", end: "12:57" },
+    { name: "Passing", start: "12:57", end: "12:59" },
+
+    { name: "Period 8", start: "12:59", end: "01:16" },
+    { name: "Passing", start: "01:16", end: "01:18" },
+
+    { name: "Period 9", start: "01:18", end: "01:48" },
+    { name: "Passing", start: "01:48", end: "01:50" },
+
+    { name: "Period 10", start: "01:50", end: "02:37" },
+    { name: "Passing", start: "02:37", end: "02:39" },
+
+    { name: "Period 11", start: "02:39", end: "03:26" }
+  ];
+
+  function toMinutes(time) {
+    const [h, m] = time.split(":").map(Number);
+    return h * 60 + m;
+  }
+
+  function updateClock() {
+    const now = new Date();
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    let current = null;
+    let next = null;
+
+    for (let i = 0; i < schedule.length; i++) {
+      const start = toMinutes(schedule[i].start);
+      const end = toMinutes(schedule[i].end);
+
+      if (currentMinutes >= start && currentMinutes < end) {
+        current = schedule[i];
+        next = schedule[i + 1];
+        break;
+      }
+    }
+
+    const title = document.getElementById("currentPeriod");
+    const timer = document.getElementById("countdown");
+
+    if (!current) {
+      title.textContent = "School is not in session";
+      timer.textContent = "--:--";
+      return;
+    }
+
+    const endParts = current.end.split(":");
+    const endTime = new Date();
+    endTime.setHours(endParts[0], endParts[1], 0);
+
+    const diff = Math.floor((endTime - now) / 1000);
+
+    const mins = Math.floor(diff / 60);
+    const secs = diff % 60;
+
+    title.textContent = current.name === "Passing"
+      ? "Passing Time (Next: " + (next ? next.name : "End") + ")"
+      : current.name;
+
+    timer.textContent =
+      String(mins).padStart(2, "0") + ":" +
+      String(secs).padStart(2, "0");
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
 });
 </script>
 
