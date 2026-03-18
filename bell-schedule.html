@@ -135,8 +135,8 @@
     </div>
   </footer>
 
-  <!-- JS for Nested Dropdown -->
-  <script>
+<!-- JS for Nested Dropdown -->
+<script>
 document.addEventListener("DOMContentLoaded", function() {
   const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
 
@@ -152,23 +152,17 @@ document.addEventListener("DOMContentLoaded", function() {
         if (d !== dropdown) d.style.display = "none";
       });
 
-      // Toggle current
+      // Toggle current dropdown
       dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
     });
   });
 
-  // Close nested dropdown if clicking outside
-  document.addEventListener("click", function(e) {
-    nestedLinks.forEach(link => {
-      const dropdown = link.nextElementSibling;
-      if (!link.parentElement.contains(e.target)) {
-        dropdown.style.display = "none";
-      }
-    });
+  // Close all nested dropdowns if clicking outside
+  document.addEventListener("click", function() {
+    document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => d.style.display = "none");
   });
 });
-});
-  </script>
+</script>
 
 </body>
 </html>
