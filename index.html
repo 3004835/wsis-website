@@ -25,30 +25,28 @@
 
     /* DROPDOWNS */
     .dropdown { position: absolute; top: 100%; left: 0; background: white; min-width: 260px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s; border-top: 4px solid #ffd700; }
-    .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-item:hover > .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
     .dropdown a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
     .dropdown a:hover { background: #f8fbff; }
     .dropdown-divider { height:1px; background:#e0e0e0; margin:8px 0; }
     .dropdown-title { display:block; padding:0.5rem 1.5rem; font-size:0.75rem; font-weight:800; color:#999; text-transform:uppercase; letter-spacing:0.5px; }
 
-    /* Position nested dropdown to the right */
-.nested-dropdown { position: relative; }
-.nested-dropdown > a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; }
-.nested-dropdown:hover > a { background: #f8fbff; }
-.nested-dropdown .dropdown {
-  top: 0;
-  left: 100%; /* makes it appear to the right */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(0);
-  transition: 0.3s;
-}
-.nested-dropdown:hover .dropdown {
-  opacity: 1;
-  visibility: visible;
-}
+    /* NESTED DROPDOWN */
+    .nested-dropdown { position: relative; }
+    .nested-dropdown > a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; }
+    .nested-dropdown > a:hover { background: #f8fbff; }
+    .nested-dropdown > .dropdown {
+      display: none; /* JS will toggle this */
+      position: absolute;
+      top: 0;
+      left: 100%;
+      min-width: 260px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border-top: 4px solid #ffd700;
+    }
 
-    /* HERO SECTION - BUILDING IMAGE HERE ONLY */
+    /* HERO SECTION */
     main { flex: 1; padding: 5rem 5%; display: flex; justify-content: center; align-items: center; }
     .hero-box { 
       width: 100%; max-width: 1200px; min-height: 500px; border-radius: 50px; overflow: hidden; position: relative; display: flex; justify-content: center; align-items: center; text-align: center;
@@ -69,10 +67,13 @@
     <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img">
     <div class="school-title"><h1>West Scranton Intermediate School</h1><p>Home of the Invaders · Grades 5-8</p></div>
   </div>
+
   <nav class="nav-bar">
     <ul class="nav-menu">
       <li class="nav-item"><a href="index.html">Home</a></li>
       <li class="nav-item"><a href="about.html">About Us</a></li>
+
+      <!-- Students Dropdown -->
       <li class="nav-item">
         <a href="#">Students <i class="fas fa-caret-down"></i></a>
         <div class="dropdown">
@@ -85,6 +86,8 @@
           <a href="search.ymal.space">Ymal Search</a>
         </div>
       </li>
+
+      <!-- Teachers Dropdown -->
       <li class="nav-item">
         <a href="#">Teachers <i class="fas fa-caret-down"></i></a>
         <div class="dropdown">
@@ -93,16 +96,21 @@
           <a href="https://clever.com" target="_blank">Clever</a>
           <a href="https://teacher.blocksi.net/">Blocksi</a>
           <a href="https://resources.finalsite.net/images/v1773344365/scrsdorg/bfj9qutowjgldm2k2fvj/SSD2025-26amendedcalendar-version2.pdf">Calendar</a>
-    <!-- NESTED DROPDOWN -->
-    <div class="nav-item nested-dropdown">
-      <a href="#">Cheating Detection <i class="fas fa-caret-right"></i></a>
-      <div class="dropdown">
-        <a href="https://www.turnitin.com" target="_blank">Turnitin</a>
-        <a href="https://www.grammarly.com/ai-detector" target="_blank">Grammarly AI Detector</a>
+
+          <!-- Nested Cheating Detection -->
+          <div class="nested-dropdown">
+            <a href="#">Cheating Detection <i class="fas fa-caret-right"></i></a>
+            <div class="dropdown">
+              <a href="https://www.turnitin.com" target="_blank">Turnitin</a>
+              <a href="https://www.grammarly.com/ai-detector" target="_blank">Grammarly AI Detector</a>
+            </div>
+          </div>
         </div>
       </li>
     </ul>
   </nav>
+
+  <!-- HERO SECTION -->
   <main>
     <div class="hero-box">
       <div class="hero-content">
@@ -111,41 +119,52 @@
       </div>
     </div>
   </main>
+
+  <!-- FOOTER -->
   <footer>
     <div class="footer-flex">
-      <div><p><strong>West Scranton Intermediate School</strong></p><p>1401 Fellows Street, Scranton, PA 18504</p><p>Phone: 570-348-3475</p></div>
-      <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank"><i class="fab fa-facebook"></i> FACEBOOK</a>
+      <div>
+        <p><strong>West Scranton Intermediate School</strong></p>
+        <p>1401 Fellows Street, Scranton, PA 18504</p>
+        <p>Phone: 570-348-3475</p>
+      </div>
+      <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank">
+        <i class="fab fa-facebook"></i> FACEBOOK
+      </a>
     </div>
   </footer>
-      <script id="js-dropdown">
-document.addEventListener("DOMContentLoaded", function() {
-  // Select all parent links that have a nested dropdown
-  const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
 
-  nestedLinks.forEach(link => {
-    link.addEventListener("click", function(e) {
-      e.preventDefault(); // prevent the # link from navigating
-      const dropdown = this.nextElementSibling;
+  <!-- JS for Nested Dropdown -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
 
-      // Toggle visibility
-      if (dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      } else {
-        dropdown.style.display = "block";
-      }
+      nestedLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          const dropdown = this.nextElementSibling;
+
+          // Close other nested dropdowns
+          document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => {
+            if (d !== dropdown) d.style.display = "none";
+          });
+
+          // Toggle current
+          dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+        });
+      });
+
+      // Close nested dropdown if click outside
+      document.addEventListener("click", function(e) {
+        nestedLinks.forEach(link => {
+          const dropdown = link.nextElementSibling;
+          if (!link.parentElement.contains(e.target)) {
+            dropdown.style.display = "none";
+          }
+        });
+      });
     });
-  });
+  </script>
 
-  // Optional: close dropdowns when clicking outside
-  document.addEventListener("click", function(e) {
-    nestedLinks.forEach(link => {
-      const dropdown = link.nextElementSibling;
-      if (!link.parentElement.contains(e.target)) {
-        dropdown.style.display = "none";
-      }
-    });
-  });
-});
-</script>
 </body>
 </html>
