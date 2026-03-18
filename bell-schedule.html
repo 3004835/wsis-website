@@ -23,8 +23,27 @@
   .dropdown a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; border-bottom:1px solid #f0f0f0; }
   .dropdown a:hover { background:#f8fbff; }
   .nested-dropdown { position:relative; }
-  .nested-dropdown > a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; }
-  .nested-dropdown > .dropdown { display:none; position:absolute; top:0; left:100%; min-width:260px; background:white; box-shadow:0 10px 30px rgba(0,0,0,0.15); border-top:4px solid #ffd700; }
+  .nested-dropdown > a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; }.nested-dropdown > .dropdown {
+  position:absolute;
+  top:0;
+  left:100%;
+  min-width:260px;
+  background:white;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  border-top:4px solid #ffd700;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: 0.25s;
+}
+
+/* SHOW WHEN ACTIVE */
+.nested-dropdown.active > .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
 
   main { flex:1; padding:5rem 5%; display:flex; justify-content:center; }
   .table-card { background:white; width:100%; max-width:1000px; padding:3rem; border-radius:40px; box-shadow:0 15px 40px rgba(0,0,0,0.05); }
@@ -117,25 +136,29 @@
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const nestedLinks = document.querySelectorAll(".nested-dropdown > a");
+document.addEventListener("DOMContentLoaded", function () {
+  const nestedItems = document.querySelectorAll(".nested-dropdown");
 
-  nestedLinks.forEach(link => {
-    link.addEventListener("click", function(e) {
+  nestedItems.forEach(item => {
+    const link = item.querySelector("a");
+
+    link.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      const dropdown = this.nextElementSibling;
-      // Close all other nested dropdowns
-      document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => {
-        if(d !== dropdown) d.style.display = "none";
+
+      // Close others
+      nestedItems.forEach(i => {
+        if (i !== item) i.classList.remove("active");
       });
+
       // Toggle current
-      dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+      item.classList.toggle("active");
     });
   });
 
-  document.addEventListener("click", function() {
-    document.querySelectorAll(".nested-dropdown .dropdown").forEach(d => d.style.display = "none");
+  // Click outside = close
+  document.addEventListener("click", function () {
+    nestedItems.forEach(item => item.classList.remove("active"));
   });
 });
 </script>
