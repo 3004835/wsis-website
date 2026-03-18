@@ -4,280 +4,174 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bell Schedule | West Scranton Intermediate School</title>
+
 <link rel="icon" href="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
-  body { background:#f0f5ff; color:#002868; min-height:100vh; display:flex; flex-direction:column; }
-  .branding-bar { background:white; padding:1.5rem 5%; display:flex; align-items:center; }
-  .logo-img { height:90px; margin-right:20px; }
-  .school-title h1 { font-size:2.8rem; color:#003399; }
-  .school-title p { font-size:1.1rem; color:#446ab3; font-weight:600; }
-  .nav-bar { background:#003399; width:100%; padding:0 5%; position:sticky; top:0; z-index:9999; }
-  .nav-menu { display:flex; list-style:none; }
-  .nav-item { position:relative; }
-  .nav-item > a { display:block; padding:1.2rem 2rem; color:white; text-decoration:none; font-weight:700; transition:0.3s; }
-  .nav-item:hover > a { background:#1e4db3; color:#ffd700; }
-  .dropdown { position:absolute; top:100%; left:0; background:white; min-width:260px; box-shadow:0 10px 30px rgba(0,0,0,0.15); opacity:0; visibility:hidden; transform:translateY(10px); transition:0.3s; border-top:4px solid #ffd700; z-index:999; }
-  .nav-item:hover > .dropdown { opacity:1; visibility:visible; transform:translateY(0); }
-  .dropdown a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; border-bottom:1px solid #f0f0f0; }
-  .dropdown a:hover { background:#f8fbff; }
-  .nested-dropdown { position:relative; }
-  .nested-dropdown > a { display:block; padding:1rem 1.5rem; color:#003399; text-decoration:none; font-weight:600; }.nested-dropdown > .dropdown {
-  position:absolute;
-  top:0;
-  left:100%;
-  min-width:260px;
-  background:white;
-  box-shadow:0 10px 30px rgba(0,0,0,0.15);
-  border-top:4px solid #ffd700;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f0f5ff;color:#002868;min-height:100vh;display:flex;flex-direction:column;}
+main{flex:1;padding:5rem 5%;display:flex;justify-content:center;}
 
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(10px);
-  transition: 0.25s;
+.table-card{background:white;width:100%;max-width:1000px;padding:3rem;border-radius:40px;box-shadow:0 15px 40px rgba(0,0,0,0.05);}
+.table-card h2{text-align:center;font-size:3rem;margin-bottom:2rem;color:#003399;}
+
+table{width:100%;border-collapse:collapse;}
+th{background:#003399;color:white;padding:1.2rem;text-align:left;}
+td{padding:1rem;border-bottom:1px solid #eee;font-weight:600;}
+tr:nth-child(even){background:#f9fbff;}
+
+.countdown-box{
+background:#003399;
+color:white;
+padding:1.5rem;
+border-radius:20px;
+text-align:center;
+margin-bottom:2rem;
 }
 
-/* SHOW WHEN ACTIVE */
-.nested-dropdown.active > .dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
+.countdown-time{
+font-size:2.5rem;
+font-weight:800;
+color:#ffd700;
 }
-
-  main { flex:1; padding:5rem 5%; display:flex; justify-content:center; }
-  .table-card { background:white; width:100%; max-width:1000px; padding:3rem; border-radius:40px; box-shadow:0 15px 40px rgba(0,0,0,0.05); }
-  .table-card h2 { font-size:3rem; color:#003399; margin-bottom:2rem; text-align:center; }
-  table { width:100%; border-collapse:collapse; }
-  th { background:#003399; color:white; padding:1.2rem; text-align:left; }
-  td { padding:1rem; border-bottom:1px solid #eee; font-weight:600; color:#333; }
-  tr:nth-child(even) { background:#f9fbff; }
-  footer { background:#002868; color:white; padding:2.5rem 5%; border-top:5px solid #ffd700; }
-  .footer-flex { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; width:100%; }
-  .fb-link { color:#ffd700; text-decoration:none; font-weight:bold; }
-
- /* LIVE COUNTDOWN */
-.countdown-box {
-  background:#003399;
-  color:white;
-  padding:1.5rem;
-  border-radius:20px;
-  text-align:center;
-  margin-bottom:2rem;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-.countdown-box h3 {
-  font-size:1.5rem;
-  margin-bottom:0.5rem;
-}
-
-.countdown-time {
-  font-size:2.5rem;
-  font-weight:800;
-  color:#ffd700;
-}
- 
 </style>
 </head>
-<body>
-<div class="branding-bar">
-  <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1652694965/scrsdorg/usnmmdgpfw3okwrrbkar/_InvaderWAI.png" class="logo-img">
-  <div class="school-title"><h1>West Scranton Intermediate School</h1><p>Home of the Invaders · Grades 5-8</p></div>
-</div>
 
-<nav class="nav-bar">
-  <ul class="nav-menu">
-    <li class="nav-item"><a href="index.html">Home</a></li>
-    <li class="nav-item"><a href="about.html">About Us</a></li>
-         <li class="nav-item"><a href="lunch-menu.html">Lunch Menu</a></li>
-    <li class="nav-item">
-      <a href="#">Students <i class="fas fa-caret-down"></i></a>
-      <div class="dropdown">
-        <a href="https://clever.com/in/scranton" target="_blank">Clever</a>
-        <a href="https://esp41pehac.eschoolplus.powerschool.com/HomeAccess/Account/LogOn?ReturnUrl=%2fHomeAccess%3fSiteCode%3dsctlive&SiteCode=sctlive" target="_blank">Home Access</a>
-        <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
-        <a href="https://safe2saypa.org" target="_blank">Safe2Say</a>
-        <a href="bell-schedule.html">Bell Schedule</a>
-      </div>
-    </li>
-    <li class="nav-item">
-      <a href="#">Teachers <i class="fas fa-caret-down"></i></a>
-      <div class="dropdown">
-        <a href="https://esp41pe.eschoolplus.powerschool.com/eSchoolPLUS/Account/LogOn" target="_blank">eSchool PLUS</a>
-        <a href="https://classroom.google.com" target="_blank">Google Classroom</a>
-        <a href="https://clever.com" target="_blank">Clever</a>
-        <div class="nested-dropdown">
-          <a href="#">Cheating Detection <i class="fas fa-caret-right"></i></a>
-          <div class="dropdown">
-            <a href="https://www.turnitin.com" target="_blank">Turnitin</a>
-            <a href="https://www.grammarly.com/ai-detector" target="_blank">Grammarly AI Detector</a>
-          </div>
-        </div>
-      </div>
-    </li>
-  </ul>
-</nav>
+<body>
 
 <main>
-  <div class="table-card">
-    <h2>2024-2026 Bell Schedule</h2>
-   <div class="countdown-box">
-  <h3 id="currentPeriod">Loading...</h3>
-  <div class="countdown-time" id="countdown">--:--</div>
-</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Period / Description</th>
-          <th>Start Time</th>
-          <th>End Time</th>
-          <th>Length</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Homeroom</td><td>8:45 AM</td><td>9:05 AM</td><td>20 min</td></tr>
-        <tr><td>Period 1</td><td>9:07 AM</td><td>9:54 AM</td><td>47 min</td></tr>
-        <tr><td>Period 2</td><td>9:56 AM</td><td>10:43 AM</td><td>47 min</td></tr>
-        <tr><td>Period 3</td><td>10:45 AM</td><td>11:15 AM</td><td>30 min</td></tr>
-        <tr><td>Period 4</td><td>11:17 AM</td><td>11:34 AM</td><td>17 min</td></tr>
-        <tr><td>Period 5</td><td>11:36 AM</td><td>12:06 AM</td><td>30 min</td></tr>
-        <tr><td>Period 6</td><td>12:08 AM</td><td>12:25 AM</td><td>17 min</td></tr>
-        <tr><td>Period 7</td><td>12:27 AM</td><td>12:57 AM</td><td>30 min</td></tr>
-        <tr><td>Period 8</td><td>12:59 AM</td><td>1:16 PM</td><td>17 min</td></tr>
-        <tr><td>Period 9</td><td>1:18 PM</td><td>1:48 PM</td><td>30 min</td></tr>
-        <tr><td>Period 10</td><td>1:50 PM</td><td>2:37 PM</td><td>47 min</td></tr>
-        <tr><td>Period 11</td><td>2:39 PM</td><td>3:26 PM</td><td>47 min</td></tr>
-      </tbody>
-    </table>
-  </div>
-</main>
+<div class="table-card">
 
-<footer>
-  <div class="footer-flex">
-    <div>
-      <p><strong>West Scranton Intermediate School</strong></p>
-      <p>1401 Fellows Street, Scranton, PA 18504</p>
-    </div>
-    <a href="https://www.facebook.com/profile.php?id=61550523236671" class="fb-link" target="_blank"><i class="fab fa-facebook"></i> FACEBOOK</a>
-  </div>
-</footer>
+<h2>2024-2026 Bell Schedule</h2>
+
+<div class="countdown-box">
+<h3 id="currentPeriod">Loading...</h3>
+<div class="countdown-time" id="countdown">--:--</div>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Start</th>
+<th>End</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>Homeroom</td><td>8:45 AM</td><td>9:05 AM</td></tr>
+<tr><td>Period 1</td><td>9:07 AM</td><td>9:54 AM</td></tr>
+<tr><td>Period 2</td><td>9:56 AM</td><td>10:43 AM</td></tr>
+<tr><td>Period 3</td><td>10:45 AM</td><td>11:15 AM</td></tr>
+<tr><td>Period 4</td><td>11:17 AM</td><td>11:34 AM</td></tr>
+
+<tr><td>Period 5</td><td>11:36 AM</td><td>12:06 PM</td></tr>
+<tr><td>Period 6</td><td>12:08 PM</td><td>12:25 PM</td></tr>
+<tr><td>Period 7</td><td>12:27 PM</td><td>12:57 PM</td></tr>
+<tr><td>Period 8</td><td>12:59 PM</td><td>1:16 PM</td></tr>
+<tr><td>Period 9</td><td>1:18 PM</td><td>1:48 PM</td></tr>
+<tr><td>Period 10</td><td>1:50 PM</td><td>2:37 PM</td></tr>
+<tr><td>Period 11</td><td>2:39 PM</td><td>3:26 PM</td></tr>
+</tbody>
+
+</table>
+</div>
+</main>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ===== NESTED DROPDOWN (keep working) =====
-  const nestedItems = document.querySelectorAll(".nested-dropdown");
+const schedule = [
+{ name:"Homeroom", start:"08:45", end:"09:05" },
+{ name:"Passing", start:"09:05", end:"09:07" },
 
-  nestedItems.forEach(item => {
-    const link = item.querySelector("a");
+{ name:"Period 1", start:"09:07", end:"09:54" },
+{ name:"Passing", start:"09:54", end:"09:56" },
 
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
+{ name:"Period 2", start:"09:56", end:"10:43" },
+{ name:"Passing", start:"10:43", end:"10:45" },
 
-      nestedItems.forEach(i => {
-        if (i !== item) i.classList.remove("active");
-      });
+{ name:"Period 3", start:"10:45", end:"11:15" },
+{ name:"Passing", start:"11:15", end:"11:17" },
 
-      item.classList.toggle("active");
-    });
-  });
+{ name:"Period 4", start:"11:17", end:"11:34" },
+{ name:"Passing", start:"11:34", end:"11:36" },
 
-  document.addEventListener("click", function () {
-    nestedItems.forEach(item => item.classList.remove("active"));
-  });
+{ name:"Period 5", start:"11:36", end:"12:06" },
+{ name:"Passing", start:"12:06", end:"12:08" },
 
-  // ===== BELL SCHEDULE WITH 2 MIN PASSING =====
-  const schedule = [
-    { name: "Homeroom", start: "08:45", end: "09:05" },
-    { name: "Passing", start: "09:05", end: "09:07" },
+{ name:"Period 6", start:"12:08", end:"12:25" },
+{ name:"Passing", start:"12:25", end:"12:27" },
 
-    { name: "Period 1", start: "09:07", end: "09:54" },
-    { name: "Passing", start: "09:54", end: "09:56" },
+{ name:"Period 7", start:"12:27", end:"12:57" },
+{ name:"Passing", start:"12:57", end:"12:59" },
 
-    { name: "Period 2", start: "09:56", end: "10:43" },
-    { name: "Passing", start: "10:43", end: "10:45" },
+{ name:"Period 8", start:"12:59", end:"13:16" },
+{ name:"Passing", start:"13:16", end:"13:18" },
 
-    { name: "Period 3", start: "10:45", end: "11:15" },
-    { name: "Passing", start: "11:15", end: "11:17" },
+{ name:"Period 9", start:"13:18", end:"13:48" },
+{ name:"Passing", start:"13:48", end:"13:50" },
 
-    { name: "Period 4", start: "11:17", end: "11:34" },
-    { name: "Passing", start: "11:34", end: "11:36" },
+{ name:"Period 10", start:"13:50", end:"14:37" },
+{ name:"Passing", start:"14:37", end:"14:39" },
 
-    { name: "Period 5", start: "11:36", end: "12:06" },
-    { name: "Passing", start: "12:06", end: "12:08" },
+{ name:"Period 11", start:"14:39", end:"15:26" }
+];
 
-    { name: "Period 6", start: "12:08", end: "12:25" },
-    { name: "Passing", start: "12:25", end: "12:27" },
+function toMinutes(t){
+const [h,m]=t.split(":").map(Number);
+return h*60+m;
+}
 
-    { name: "Period 7", start: "12:27", end: "12:57" },
-    { name: "Passing", start: "12:57", end: "12:59" },
+function updateClock(){
+const now=new Date();
+const currentMinutes=now.getHours()*60+now.getMinutes();
 
-    { name: "Period 8", start: "12:59", end: "01:16" },
-    { name: "Passing", start: "01:16", end: "01:18" },
+let current=null,next=null;
 
-    { name: "Period 9", start: "01:18", end: "01:48" },
-    { name: "Passing", start: "01:48", end: "01:50" },
+for(let i=0;i<schedule.length;i++){
+const start=toMinutes(schedule[i].start);
+const end=toMinutes(schedule[i].end);
 
-    { name: "Period 10", start: "01:50", end: "02:37" },
-    { name: "Passing", start: "02:37", end: "02:39" },
+if(currentMinutes>=start && currentMinutes<end){
+current=schedule[i];
+next=schedule[i+1];
+break;
+}
+}
 
-    { name: "Period 11", start: "02:39", end: "03:26" }
-  ];
+const title=document.getElementById("currentPeriod");
+const timer=document.getElementById("countdown");
 
-  function toMinutes(time) {
-    const [h, m] = time.split(":").map(Number);
-    return h * 60 + m;
-  }
+if(!current){
+title.textContent="School is not in session";
+timer.textContent="--:--";
+return;
+}
 
-  function updateClock() {
-    const now = new Date();
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+const [h,m]=current.end.split(":");
+const endTime=new Date();
+endTime.setHours(h,m,0);
 
-    let current = null;
-    let next = null;
+const diff=Math.floor((endTime-now)/1000);
 
-    for (let i = 0; i < schedule.length; i++) {
-      const start = toMinutes(schedule[i].start);
-      const end = toMinutes(schedule[i].end);
+const mins=Math.floor(diff/60);
+const secs=diff%60;
 
-      if (currentMinutes >= start && currentMinutes < end) {
-        current = schedule[i];
-        next = schedule[i + 1];
-        break;
-      }
-    }
+title.textContent =
+current.name==="Passing"
+? "Passing (Next: "+(next?next.name:"End")+")"
+: current.name;
 
-    const title = document.getElementById("currentPeriod");
-    const timer = document.getElementById("countdown");
+timer.textContent =
+String(mins).padStart(2,"0")+":"+
+String(secs).padStart(2,"0");
+}
 
-    if (!current) {
-      title.textContent = "School is not in session";
-      timer.textContent = "--:--";
-      return;
-    }
+setInterval(updateClock,1000);
+updateClock();
 
-    const endParts = current.end.split(":");
-    const endTime = new Date();
-    endTime.setHours(endParts[0], endParts[1], 0);
-
-    const diff = Math.floor((endTime - now) / 1000);
-
-    const mins = Math.floor(diff / 60);
-    const secs = diff % 60;
-
-    title.textContent = current.name === "Passing"
-      ? "Passing Time (Next: " + (next ? next.name : "End") + ")"
-      : current.name;
-
-    timer.textContent =
-      String(mins).padStart(2, "0") + ":" +
-      String(secs).padStart(2, "0");
-  }
-
-  setInterval(updateClock, 1000);
-  updateClock();
 });
 </script>
 
