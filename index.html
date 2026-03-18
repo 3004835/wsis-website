@@ -76,6 +76,85 @@
 
     opacity: 0.3;            /* barely visible */
 }
+
+    .invader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.invader-box {
+  background: #111;
+  border: 2px solid #00ffcc;
+  border-radius: 15px;
+  padding: 30px;
+  width: 350px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 20px #00ffcc;
+  animation: fadeIn 0.8s ease;
+}
+
+.invader-box h1 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.invader-box .accent {
+  color: #00ffcc;
+}
+
+.invader-box p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.role-model {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #00ffcc;
+  letter-spacing: 1px;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.actions label {
+  font-size: 12px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.actions button {
+  padding: 8px 18px;
+  background: #00ffcc;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.actions button:hover {
+  background: #00ccaa;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+    
   </style>
 </head>
 <body>
@@ -138,6 +217,32 @@
     </div>
   </main>
 
+  <div id="invaderPopup" class="invader-overlay">
+  <div class="invader-box">
+    <h1>
+      <span>Welcome To</span><br>
+      <span class="accent">The House</span><br>
+      <span>Of Invaders!</span>
+    </h1>
+
+    <p>
+      We glad to see you being part of our<br>
+      community and being an Invader!
+    </p>
+
+    <div class="role-model">BE A ROLE MODEL!</div>
+
+    <div class="actions">
+      <label>
+        <input type="checkbox" id="dontShow">
+        Don't show again
+      </label>
+
+      <button onclick="closeInvaderPopup()">Enter</button>
+    </div>
+  </div>
+</div>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-flex">
@@ -179,6 +284,28 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".nested-dropdown-menu").forEach(m => m.style.display = "none");
   });
 });
+
+    // PopUP of Welcome Popup
+
+    function closeInvaderPopup() {
+  const dontShow = document.getElementById("dontShow").checked;
+
+  if (dontShow) {
+    localStorage.setItem("hideInvaderPopup", "true");
+  }
+
+  document.getElementById("invaderPopup").style.display = "none";
+}
+
+// Show popup only if not disabled
+window.addEventListener("load", () => {
+  const hidden = localStorage.getItem("hideInvaderPopup");
+
+  if (hidden !== "true") {
+    document.getElementById("invaderPopup").style.display = "flex";
+  }
+});
+    
   </script>
 </body>
 </html>
