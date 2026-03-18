@@ -60,6 +60,22 @@
     footer { background: #002868; color: white; padding: 2.5rem 5%; border-top: 5px solid #ffd700; }
     .footer-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
     .fb-link { color: #ffd700; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+
+               .wisi-credit {
+    position: fixed;
+    right: 4px;
+    bottom: 4px;
+
+    font-size: 8px;          /* super tiny */
+    color: rgba(0, 0, 0, 0.15);  /* very faint */
+    font-family: Arial, sans-serif;
+
+    user-select: none;       /* can't highlight */
+    pointer-events: none;    /* can't click */
+    z-index: 9999;
+
+    opacity: 0.3;            /* barely visible */
+}
   </style>
 </head>
 <body>
@@ -111,6 +127,7 @@
     </ul>
   </nav>
 
+  <div class="wisi-credit">WISI by YMAL.space</div>
   <!-- HERO SECTION -->
   <main>
     <div class="hero-box">
