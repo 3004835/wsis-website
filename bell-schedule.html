@@ -29,6 +29,23 @@
     .dropdown-divider { height:1px; background:#e0e0e0; margin:8px 0; }
     .dropdown-title { display:block; padding:0.5rem 1.5rem; font-size:0.75rem; font-weight:800; color:#999; text-transform:uppercase; letter-spacing:0.5px; }
 
+    /* Position nested dropdown to the right */
+.nested-dropdown { position: relative; }
+.nested-dropdown > a { display: block; padding: 1rem 1.5rem; color: #003399; text-decoration: none; font-weight: 600; }
+.nested-dropdown:hover > a { background: #f8fbff; }
+.nested-dropdown .dropdown {
+  top: 0;
+  left: 100%; /* makes it appear to the right */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0);
+  transition: 0.3s;
+}
+.nested-dropdown:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
     main { flex: 1; padding: 5rem 5%; display: flex; justify-content: center; }
     .table-card { background: white; width: 100%; max-width: 1000px; padding: 3rem; border-radius: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
     .table-card h2 { font-size: 3rem; color: #003399; margin-bottom: 2rem; text-align: center; }
