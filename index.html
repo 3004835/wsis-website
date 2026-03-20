@@ -160,22 +160,20 @@
   background: #084298;
 }
 
-    /* Facebook Latest Posts */
-.fb-latest-posts {
+/* Facebook Page Plugin Container */
+.fb-page-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px; /* space from hero section */
+  justify-content: center;
+  margin-top: 50px;       /* spacing from hero section */
+  width: 100%;
 }
 
-.fb-latest-posts iframe {
-  width: 100%;
-  max-width: 600px;  /* keeps posts from being too wide */
-  border: none;
-  overflow: hidden;
-  margin-bottom: 20px; /* spacing between posts */
-  border-radius: 10px; /* optional: rounded corners */
+.fb-page-container .fb-page {
+  width: 100% !important;
+  max-width: 600px;       /* keeps it from stretching too wide */
   box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* optional: subtle shadow */
+  border-radius: 10px;    /* optional: rounded corners */
+  overflow: hidden;
 }
 
 @keyframes fadeIn {
